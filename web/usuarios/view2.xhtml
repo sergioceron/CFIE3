@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+<ui:define name="body">
+<p:messages id="messages" autoUpdate="true" closable="true"/>
+<h:form id="form1">
+<div style="text-align:center;" align="center">
+
+<p:panelGrid columns="6" style="width:100%">
+    <f:facet name="header">
+        Datos de la cuenta
+    </f:facet>
+
+    <h:outputLabel value="Nombre de usuario: "/>
+    <h:outputText value="#{usuarioBean.usuario.username}" />
+
+    <h:outputLabel value="Contraseña: "/>
+    <h:outputText value="*********"  />
+
+</p:panelGrid>
+
+<p:panelGrid columns="6" style="width:100%">
+    <f:facet name="header">
+        Datos del usuario
+    </f:facet>
+
+    <h:outputLabel value="Nombre: "/>
+    <h:outputText value="#{usuarioBean.usuario.nombre}" />
+
+    <h:outputLabel value="Apellido paterno: "/>
+    <h:outputText value="#{usuarioBean.usuario.apellidoPaterno}" />
+
+    <h:outputLabel value="Apellido materno: "/>
+    <h:outputText value="#{usuarioBean.usuario.apellidoMaterno}" />
+
+    <h:outputLabel value="No. de empleado: "/>
+    <h:outputText value="#{usuarioBean.usuario.numeroEmpleado}" />
+
+    <h:outputLabel value="RFC: "/>
+    <h:outputText value="#{usuarioBean.usuario.rfc}" />
+
+    <h:outputLabel value="Nivel Academico: "/>
+    <h:outputText value="#{usuarioBean.usuario.nivelAcademico}" />
+
+    <h:outputLabel value="Unidad Academica:"/>
+    <h:outputText value="#{usuarioBean.usuario.unidadAcademica}" />
+
+    <h:outputLabel value="Departamento: "/>
+    <h:outputText value="#{usuarioBean.usuario.departamento}" />
+
+    <h:outputLabel value="Puesto: "/>
+    <h:outputText value="#{usuarioBean.usuario.puesto}" />
+
+    <h:outputLabel value="Telefono: "/>
+    <h:outputText value="#{usuarioBean.usuario.telefonoOficina}" />
+
+    <h:outputLabel value="Extension: "/>
+    <h:outputText value="#{usuarioBean.usuario.extension}" />
+
+    <h:outputLabel value="Móvil: "/>
+    <h:outputText value="#{usuarioBean.usuario.movil}" />
+
+    <h:outputLabel value="Perfil: *"/>
+    <h:outputText value="#{usuarioBean.usuario.role}" />
+
+    <f:facet name="footer">
+        <p:commandButton value="Editar" action="edit" icon="ui-icon-pencil"
+                         process="@this" />
+        <p:commandButton value="Ver listado" action="list" icon="ui-icon-clipboard"
+                         process="@this" />
+    </f:facet>
+</p:panelGrid>
+
+</div>
+</h:form>
+</ui:define>
+
+</ui:composition>
+

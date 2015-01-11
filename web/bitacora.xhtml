@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel style="border:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <p:outputPanel style="display:block;text-align:right">
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/excel.png" />
+                        <p:dataExporter type="xls" target="eventos" fileName="bitacora"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/pdf.png" />
+                        <p:dataExporter type="pdf" target="eventos" fileName="bitacora"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/csv.png" />
+                        <p:dataExporter type="csv" target="eventos" fileName="bitacora" />
+                    </h:commandLink>
+                </p:outputPanel>
+
+                <p:dataTable id="eventos" var="e" value="#{bitacoraBean.events}"
+                             paginator="true" rows="15"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column filterBy="#{e.usuario}" filterMatchMode="contains">
+                        <f:facet name="header">Usuario</f:facet>
+                        <h:outputText value="#{e.usuario}" />
+                    </p:column>
+                    <p:column filterBy="#{e.perfil}" filterMatchMode="contains">
+                        <f:facet name="header">Perfil</f:facet>
+                        <h:outputText value="#{e.perfil}" />
+                    </p:column>
+                    <p:column filterBy="#{e.accion}" filterMatchMode="contains">
+                        <f:facet name="header">Accion</f:facet>
+                        <h:outputText value="#{e.accion}" />
+                    </p:column>
+                    <p:column filterBy="#{e.detalles}" filterMatchMode="contains">
+                        <f:facet name="header">Detalles</f:facet>
+                        <h:outputText value="#{e.detalles}" />
+                    </p:column>
+                    <p:column filterBy="#{e.hora}" filterMatchMode="contains">
+                        <f:facet name="header">Fecha/Hora</f:facet>
+                        <h:outputText value="#{e.hora}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:commandButton value="Regresar" action="/panel.xhtml" icon="ui-icon-close" process="@this" ajax="false" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

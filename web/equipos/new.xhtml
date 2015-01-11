@@ -1,0 +1,302 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+
+        <h:form id="form1">
+            <div>
+                <p:growl autoUpdate="true" id="messages"/>
+                <p:panelGrid columns="2" style="width:100%">
+                    <f:facet name="header">
+                        Datos del Proyecto
+                    </f:facet>
+
+                    <h:outputLabel for="folio" value="Folio: "/>
+                    <p:inputText id="folio" value="#{equiposBean.proyecto.folioSIP}" readonly="true"/>
+
+                    <h:outputLabel for="titulo" value="Título: "/>
+                    <p:inputText id="titulo" value="#{equiposBean.proyecto.titulo}" readonly="true" />
+
+                    <h:outputLabel for="director" value="Director: *"/>
+                    <p:selectOneMenu id="director" value="#{equiposBean.proyecto.director}" required="true" requiredMessage="El director de proyecto es obligatorio"
+                                      converter="mx.ipn.cfie.proyectos.converters.usuarioConverter">
+                        <f:selectItems value="#{equiposBean.directores}"
+                                       var="e"
+                                       itemLabel="#{e}"
+                                       itemValue="#{e}" />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <hr />
+                <p:outputPanel id="op">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                            <td>Categoría</td>
+                            <td>Nivel de Estudios</td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 1</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno1.nombre}" size="11"
+                                             validatorMessage="El nombre del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno1.apellidoPaterno}" size="11"
+                                             validatorMessage="El apellido paterno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno1.apellidoMaterno}" size="11"
+                                             validatorMessage="El apellido materno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno1.categoria}" editable="true">
+                                    <f:selectItem itemLabel="Tesistas" itemValue="Tesistas"/>
+                                    <f:selectItem itemLabel="Practicantes Profesionales" itemValue="Practicantes Profesionales"/>
+                                    <f:selectItem itemLabel="Alumnos PIFI" itemValue="Alumnos PIFI"/>
+                                    <f:selectItem itemLabel="Prestante de Servicio Social" itemValue="Prestante de Servicio Social"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno1.nivelEstudios}">
+                                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                                    <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 2</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno2.nombre}" size="11"
+                                             validatorMessage="El nombre del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno2.apellidoPaterno}" size="11"
+                                             validatorMessage="El apellido paterno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno2.apellidoMaterno}" size="11"
+                                             validatorMessage="El apellido materno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno2.categoria}" editable="true">
+                                    <f:selectItem itemLabel="Tesistas" itemValue="Tesistas"/>
+                                    <f:selectItem itemLabel="Practicantes Profesionales" itemValue="Practicantes Profesionales"/>
+                                    <f:selectItem itemLabel="Alumnos PIFI" itemValue="Alumnos PIFI"/>
+                                    <f:selectItem itemLabel="Prestante de Servicio Social" itemValue="Prestante de Servicio Social"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno2.nivelEstudios}">
+                                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                                    <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 3</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno3.nombre}" size="11"
+                                             validatorMessage="El nombre del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno3.apellidoPaterno}" size="11"
+                                             validatorMessage="El apellido paterno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno3.apellidoMaterno}" size="11"
+                                             validatorMessage="El apellido materno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno3.categoria}" editable="true">
+                                    <f:selectItem itemLabel="Tesistas" itemValue="Tesistas"/>
+                                    <f:selectItem itemLabel="Practicantes Profesionales" itemValue="Practicantes Profesionales"/>
+                                    <f:selectItem itemLabel="Alumnos PIFI" itemValue="Alumnos PIFI"/>
+                                    <f:selectItem itemLabel="Prestante de Servicio Social" itemValue="Prestante de Servicio Social"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno3.nivelEstudios}">
+                                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                                    <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 4</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno4.nombre}" size="11"
+                                             validatorMessage="El nombre del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno4.apellidoPaterno}" size="11"
+                                             validatorMessage="El apellido paterno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno4.apellidoMaterno}" size="11"
+                                             validatorMessage="El apellido materno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno4.categoria}" editable="true">
+                                    <f:selectItem itemLabel="Tesistas" itemValue="Tesistas"/>
+                                    <f:selectItem itemLabel="Practicantes Profesionales" itemValue="Practicantes Profesionales"/>
+                                    <f:selectItem itemLabel="Alumnos PIFI" itemValue="Alumnos PIFI"/>
+                                    <f:selectItem itemLabel="Prestante de Servicio Social" itemValue="Prestante de Servicio Social"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno4.nivelEstudios}">
+                                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                                    <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 5</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno5.nombre}" size="11"
+                                             validatorMessage="El nombre del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno5.apellidoPaterno}" size="11"
+                                             validatorMessage="El apellido paterno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.alumno5.apellidoMaterno}" size="11"
+                                             validatorMessage="El apellido materno del alumno solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno5.categoria}" editable="true">
+                                    <f:selectItem itemLabel="Tesistas" itemValue="Tesistas"/>
+                                    <f:selectItem itemLabel="Practicantes Profesionales" itemValue="Practicantes Profesionales"/>
+                                    <f:selectItem itemLabel="Alumnos PIFI" itemValue="Alumnos PIFI"/>
+                                    <f:selectItem itemLabel="Prestante de Servicio Social" itemValue="Prestante de Servicio Social"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{equiposBean.proyecto.alumno5.nivelEstudios}">
+                                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                                    <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+                    </table>
+                </p:outputPanel>
+                <hr />
+                <p:outputPanel id="op1">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                        </tr>
+                        <tr>
+                            <td>Investigador 1</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador1.nombre}"
+                                             validatorMessage="El nombre del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador1.apellidoPaterno}"
+                                             validatorMessage="El apellido paterno del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador1.apellidoMaterno}"
+                                             validatorMessage="El apellido materno del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                        </tr>
+                        <tr>
+                            <td>Investigador 2</td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador2.nombre}"
+                                             validatorMessage="El nombre del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador2.apellidoPaterno}"
+                                             validatorMessage="El apellido paterno del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                            <td>
+                                <p:inputText value="#{equiposBean.proyecto.investigador2.apellidoMaterno}"
+                                             validatorMessage="El apellido materno del investigador solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </td>
+                        </tr>
+                    </table>
+                </p:outputPanel>
+
+                <p:commandButton value="Cancelar" action="list" icon="ui-icon-close"
+                                 process="@this" />
+                <p:commandButton value="Guardar" action="#{equiposBean.save}" icon="ui-icon-check"
+                                 process="@all" />
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

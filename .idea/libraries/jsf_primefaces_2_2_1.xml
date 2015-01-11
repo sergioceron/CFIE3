@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jsf/primefaces-2.2.1" type="jsf-primefaces">
+    <properties version="2.2.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/primefaces-3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/poi-3.8-20120326.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/itext-2.1.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

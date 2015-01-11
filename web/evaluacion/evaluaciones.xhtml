@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="border:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <p:outputPanel style="display:block;text-align:right">
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/excel.png" />
+                        <p:dataExporter type="xls" target="proyectos" fileName="evaluaciones"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/pdf.png" />
+                        <p:dataExporter type="pdf" target="proyectos" fileName="evaluaciones"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/csv.png" />
+                        <p:dataExporter type="csv" target="proyectos" fileName="evaluaciones" />
+                    </h:commandLink>
+                </p:outputPanel>
+
+                <p:dataTable id="proyectos" var="_proyecto" value="#{evaluacionBean.misEvaluaciones}"
+                             paginator="true" rows="15"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15"
+                             emptyMessage="Usted no tiene evaluaciones por realizar">
+                    <p:column filterBy="#{_proyecto.folioSIP}" filterMatchMode="contains">
+                        <f:facet name="header">Folio SIP</f:facet>
+                        <h:outputText value="#{_proyecto.folioSIP}" />
+                    </p:column>
+                    <p:column filterBy="#{_proyecto.titulo}" filterMatchMode="contains">
+                        <f:facet name="header">Titulo</f:facet>
+                        <h:outputText value="#{_proyecto.titulo}" />
+                    </p:column>
+                    <p:column filterBy="#{e_proyecto.unidadAcademica}" filterMatchMode="contains">
+                        <f:facet name="header">Unidad Academica</f:facet>
+                        <h:outputText value="#{_proyecto.unidadAcademica}" />
+                    </p:column>
+                    <p:column filterBy="#{_proyecto.areaConocimiento}" filterMatchMode="contains">
+                        <f:facet name="header">Area de Conocimiento</f:facet>
+                        <h:outputText value="#{_proyecto.areaConocimiento}" />
+                    </p:column>
+                    <p:column headerText="Acción" exportable="false">
+                        <p:commandButton icon="ui-icon-pencil" action="#{evaluacionBean.evaluar(_proyecto)}" ajax="false" rendered="#{configBean.periodoActivo}"/>
+                        <p:commandButton icon="ui-icon-search" action="#{evaluacionBean.ficha(_proyecto)}" ajax="false" rendered="#{_proyecto.evaluado}" />
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Regresar" action="/panel.xhtml" icon="ui-icon-close" process="@this" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

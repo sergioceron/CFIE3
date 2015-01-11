@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="CFIE3:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/CFIE3_war</output-path>
+    <root id="archive" name="CFIE3_war.war">
+      <element id="artifact" artifact-name="CFIE3:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.hibernate:hibernate-validator:3.1.0.CR2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

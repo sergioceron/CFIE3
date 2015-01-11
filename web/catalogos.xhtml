@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="border:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <p:outputPanel>
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg2.show()" />
+                    <p:dialog header="Nuevo Departamento" widgetVar="dlg2" resizable="false" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px">
+                            <h:outputLabel for="depa" value="Departamento:"/>
+                            <p:inputText id="depa" value="#{collectionsBean.departamento.departamento}"
+                                         required="true" requiredMessage="El nombre del departamento es necesario"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,depa"
+                                         actionListener="#{collectionsBean.saveDepartamento}"
+                                         update="departamentos"
+                                         partialSubmit="true" oncomplete="dlg2.hide();"/>
+                    </p:dialog>
+                <p:dataTable id="departamentos" var="_departamento" value="#{collectionsBean.departamentos}"
+                             emptyMessage="No hay departamentos registrados" editable="true">
+
+                    <f:facet name="header">
+                        Departamentos
+                    </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{collectionsBean.onEditDepartamentos}" />
+
+                    <p:column headerText="Departamento">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{_departamento.departamento}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{_departamento.departamento}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Opciones" style="width:50px">
+                        <p:rowEditor />
+                        <p:commandButton icon="ui-icon-closethick" update="departamentos" action="#{collectionsBean.removeDepartamento(_departamento)}" process="@this" ajax="true"/>
+                    </p:column>
+                </p:dataTable>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg1.show()" />
+                    <p:dialog header="Nueva Unidad Academica" widgetVar="dlg1" resizable="false" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px">
+                            <h:outputLabel for="unidad" value="Unidad Academica:"/>
+                            <p:inputText id="unidad" value="#{collectionsBean.unidadAcademica.unidad}"
+                                         required="true" requiredMessage="El nombre de la unidad academica es necesario"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,unidad"
+                                         actionListener="#{collectionsBean.saveUnidadAcademica}"
+                                         update="unidadesAcademicas"
+                                         partialSubmit="true" oncomplete="dlg1.hide();"/>
+                    </p:dialog>
+                <p:dataTable id="unidadesAcademicas" var="_ua" value="#{collectionsBean.unidadesAcademicas}"
+                             emptyMessage="No hay unidades academicas registradas" editable="true">
+
+                    <f:facet name="header">
+                        Unidades Academicas
+                    </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{collectionsBean.onEditUnidadAcademica}" />
+
+                    <p:column headerText="Unidad Academica">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{_ua.unidad}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{_ua.unidad}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Opciones" style="width:50px">
+                        <p:rowEditor />
+                        <p:commandButton icon="ui-icon-closethick" update="unidadesAcademicas" action="#{collectionsBean.removeUnidadAcademica(_ua)}"  process="@this" ajax="true"/>
+                    </p:column>
+                </p:dataTable>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg3.show()" />
+                    <p:dialog header="Nuevo Puesto" widgetVar="dlg3" resizable="false" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px">
+                            <h:outputLabel for="_puesto" value="Puesto:"/>
+                            <p:inputText id="_puesto" value="#{collectionsBean.puesto.puesto}" required="true" requiredMessage="El nombre del puesto es necesario"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,_puesto"
+                                         actionListener="#{collectionsBean.savePuesto}"
+                                         update="puestos"
+                                         partialSubmit="true" oncomplete="dlg3.hide();"/>
+                    </p:dialog>
+                <p:dataTable id="puestos" var="_puesto" value="#{collectionsBean.puestos}"
+                             emptyMessage="No hay puestos registrados" editable="true">
+
+                    <f:facet name="header">
+                        Puestos
+                    </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{collectionsBean.onEditPuesto}" />
+
+                    <p:column headerText="Puesto">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{_puesto.puesto}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{_puesto.puesto}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Opciones" style="width:50px">
+                        <p:rowEditor />
+                        <p:commandButton icon="ui-icon-closethick" update="puestos" action="#{collectionsBean.removePuesto(_puesto)}" process="@this" ajax="true"/>
+                    </p:column>
+                </p:dataTable>
+                </p:outputPanel>
+
+                <p:commandButton value="Regresar" action="/panel.xhtml" icon="ui-icon-close" process="@this" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,471 @@
+@charset "utf-8";
+/* CSS Document */
+/*IPN*/
+/*CVB CLASES*/
+* {
+/*	text-align: justify;*/
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.br_ddths {
+	width: 770px;
+	height: 30px;
+	float: left;
+}
+/******************/
+.columna_reducida {
+	width:300;
+	float:left;
+}
+.columna_2 {
+	float: left;
+	width: 400px;
+	padding-left: 15px;
+}
+/************/
+.minibaners {
+	float: left;
+	width:200px;
+	text-align: center !important;
+	padding-top: 10px;
+}
+.col_izq {
+	float: left;
+	width: 380px;
+	height: 100%;
+	margin-top: 5px;
+}
+.col_der {
+	float: left;
+	width: 380px;
+	height: 100%;
+	margin-left: 13px;
+	margin-top: 5px;
+}
+.cont_Principal {
+	float: left;
+	width: 573px;
+}
+.idiomas, .idiomas a {
+	color : #fff;
+	text-align : center;
+	font-size: 11px;
+} 
+.slogan {  font-size : 10px; color : #000000; text-align : right; }  
+.titulomap a {
+	color : #666;
+	text-align : left;
+} 
+.path_interno {  font-size : 10px; color : #ff9900; font-weight : bold; } 
+.titulo_principal:first-letter { color : #155355; } 
+.titulo_principal {
+	background-color : #eaf1e9;
+	color : #828687;
+	padding-left : 4px;
+	font-weight: bold;
+} 
+.titulo_secundario:first-letter { color : #155355; } 
+.titulo_secundario {
+	background-color : #f6f5e1;
+	color : #828687;
+	padding-left : 8px;
+	font-weight: bold;
+} 
+.contenido_titulos {
+	font-size : 11px;
+	color : #666;
+	text-align : justify;
+} 
+.etiquetas:first-letter { color : #155355; } 
+.etiquetas {
+	background-color : #ecf3fe;
+	font-size: 9px;
+	font-weight: bold;
+}
+.imagen_evento { border : 2px solid #ccc; padding : 6px; } 
+span img {
+	/*border : 2px solid #ccc;
+	padding : 6px;*/
+}
+.encabezado {  font-size : 11px; font-weight : bold; color : #fff; background-color : #4f81bd; } 
+.enlistado, .enlistado .titulo_resultado a { color : #0000ff; } 
+.titulo_resultado a:hover { text-decoration : underline; }
+.descripcion_resultado { padding-left : 18px; } 
+.enlace_resultado { color : #336600; }
+.marcador_busqueda { font-weight : bold; color : #6c4100; } 
+.controles, .controles a {  font-size : 11px; text-decoration : none; color : #000; } 
+.portada { border : 0; } 
+#portada { border : 0; } 
+td div a img { border : 0; }  
+#centrado {
+	width : 993px;
+	margin: 0px auto;
+}
+.cabecera {
+	height: 76px;
+	width: 993px;
+	float: left;
+}
+.lema_IPN_prin {
+	background-color: transparent !important;
+	float: left;
+	height: 56px;
+	width: 270px;
+}
+.escudo_IPN {
+float : left;
+width : 52px;
+height : 56px;
+}
+.dependencia_borrar {
+width : 54px;
+height : 70px;
+}
+.urldependencia {
+	background-position: top;
+}
+.nav_sub_perfiles, .nav_sub_perfiles a {
+	color : #FFF;
+	background-color : #6b8d97;
+}
+.contenido_int {
+	width : 773px;
+	/*height: 100%;*/
+	padding-left: 210px;
+	padding-right: 10px;
+	*padding-left: 10px !important;  /* Sólo IE7 */
+	*padding-left: 10px; /* Sólo IE6 */
+	padding-top: 10px;
+}
+.contenido {
+
+}
+p {
+}
+.contenido a {
+	color : #00C;
+	text-align : justify;
+	text-decoration : underline;
+}
+.contenido a:visited {
+	color : #906;
+	text-align : justify;
+}
+.ligas_relacionadas, .ligas_relacionadas a {
+font-size : 11px;
+color : #d8cbd2;
+background-color : #61818c;
+}
+.imagen {
+	border : 2px solid #ccc;
+	padding-left : 3px;
+	padding-top : 16px;
+	padding-right : 3px;
+	padding-bottom : 19px;
+	text-align : center;
+	font-size: 11px;
+}
+.enlaces a {
+font-size : 11px;
+color : #6c193f;
+text-align : justify;
+}
+.titulo_nav ul li {
+font-size : 13px;
+text-align : center;
+letter-spacing : 2px;
+font-weight : bold;
+color : #6b998e;
+}
+.titulo_nav {
+font-size : 11px;
+text-align : center;
+letter-spacing : 2px;
+color : #6c1937;
+font-weight : bold;
+padding : 0;
+margin : 0;
+}
+.titulo_nav a {
+font-size : 11px;
+text-align : center;
+letter-spacing : 2px;
+color : #660000;
+font-weight : bold;
+background-image : url(FONDO_TITULOS.HTM);
+}
+.contenido_nav a {
+font-size : 11px;
+color : #0000ff;
+}
+.separador {
+background-color : #6b998e;
+}
+#textocentral_principal {
+padding : 0;
+margin : 0;
+width : 546px;
+position : relative;
+float : left;
+}
+#pagina_principal {
+	width : 546px;
+	position : relative;
+	float : left;
+}
+#hoyenelipn {
+	width : 190px;
+	position : relative;
+	float : right;
+}
+#vidaestudiantil {
+	width : 190px;
+	position : relative;
+	float : left;
+	border-top : 1px solid #000;
+}
+#eventos {
+	width : 300px;
+	position : relative;
+	float : left;
+}
+#investigacion {
+	width : 181px;
+	position : relative;
+	float : left;
+}
+#investigacion1 {
+	width : 181px;
+	position : relative;
+	float : right;
+}
+#menu {
+	margin : 5px;
+	width : 150px;
+	position : relative;
+	float : left;
+	vertical-align : middle;
+	border : 1px solid #660000;
+}
+#menu_int {
+	margin : 5px;
+	width : 150px;
+	position : relative;
+	float : left;
+	vertical-align : middle;
+	border-top-width : 1px;
+	border-right-width : 1px;
+	border-bottom-width : 1px;
+	border-left-width : 1px;
+	border-top-style : none;
+	border-right-style : none;
+	border-bottom-style : none;
+	border-left-style : none;
+}
+#contenido_menu {
+	padding : 5px;
+	width : 100%;
+	position : relative;
+	border-top : 1px solid #6b998e;
+	text-align : left;
+	font-size : 13px;
+	color : #363afd;
+	text-decoration : none;
+}
+a {
+	text-decoration : none;
+}
+.path_interno {
+font-size : 10px;
+color : #ff9900;
+font-weight : bold;
+}
+.titulo_principal:first-letter {
+color : #155355;
+}
+.titulo_principal {
+background-color : #eaf1e9;
+font : bold 12px arial;
+color : #828687;
+padding-left : 4px;
+}
+.titulo_secundario:first-letter {
+color : #155355;
+}
+.titulo_secundario {
+background-color : #f6f5e1;
+font : bold 12px arial;
+color : #828687;
+padding-left : 8px;
+}
+.contenido_titulos {
+font-size : 11px;
+color : #666666;
+text-align : justify;
+}
+.etiquetas:first-letter {
+color : #155355;
+}
+.etiquetas {
+	background-color : #ecf3fe;
+	font-size: 9px;
+	font-weight: bold;
+}
+.imagen_evento {
+border : 2px solid #cccccc;
+padding : 6px;
+}
+span img {
+/*border : 2px solid #cccccc;*
+padding : 6px;                */
+}
+.caja {
+	border : 2px solid #aaacab;
+	width : 150px;
+	height : 17px;
+	padding-left: 10px;
+}
+.encabezado {
+font-size : 11px;
+font-weight : bold;
+color : #fff;
+background-color : #4f81bd;
+}
+.enlistado, .enlistado a {
+background-color : #d0d8e8;
+font-size : 10px;
+text-decoration : none;
+color : #000;
+}
+.descripcion_resultado {
+padding-left : 18px;
+}
+.enlace_resultado {
+color : #336600;
+}
+.marcador_busqueda {
+font-weight : bold;
+color : #6c4100;
+}
+.controles, .controles a {
+	font-size : 11px;
+	text-decoration : none;
+	color : #000;
+}
+#BarraTitulo {
+	width : 993px;
+	height : 54px;
+	float: left;
+}
+#ruta_gral_int {
+float : left;
+height : 54px;
+width : 793px;
+}
+#ruta_gral_contenido {
+	text-align : right;
+	padding-right: 10px;
+	float: left;
+	height: 16px;
+	width: 783px;
+}
+#BannerCentrado {
+	width : 993px;
+	height : 100px;
+	float: left;
+}
+.cabecera_prin {
+width : 993px;
+float : left;
+}
+.nombre_IPN {
+float : left;
+}
+.IPN, .IPN a, .IPN a:hover {
+	color: #4b4c4c !important;
+	font-size: 15px !important;
+	text-decoration: none !important;
+	text-align: right;
+	font-weight:bold;
+	float : left;
+	width: 217px;
+	margin-top: 5px;
+	*margin-top: 0px; /* Sólo IE6 */	
+	margin-right: 0;
+	margin-bottom: 1px;
+	margin-left: 0;
+}
+.slogan {
+	margin-top: 3px;
+	color: #8f9090 !important;
+	float: left;
+	width: 217px;
+}
+.div_IPN {
+	background-color: #bdb4b0 !important;
+	float: left;
+	height: 1px;
+	width: 217px;
+}
+.dependencia {
+	float : left;
+	width : 70px;
+	height : 76px;
+}
+.Idiomas_Banner {
+	float : right;
+	margin-top : 80px;
+	margin-right : 10px;
+}
+/****************************/
+.div_nav_izq {
+	float: left;
+	width: 200px;
+}
+.nav_perfiles {
+	float: left;
+	width: 200px;
+}
+.utilerias{
+	float: left;
+	width: 200px;
+}
+/***************************/
+#area_contenidos div.fondo_menu_izquierdo {
+	width : 200px;
+	z-index: 10;
+	float: left;
+}
+#titulo_contenidos {
+	height: 36px;
+	float: left;
+	width: 793px;
+}
+#area_contenidos {
+	width: 993px;
+	float: left;
+}
+#linea_titulo_int {
+	float: left;
+	height: 2px;
+}
+#encuesta {
+	float : left;
+	color : #5b5c60;
+	width: 773px;
+}
+#fecha_act {
+	width : 773px;
+	float: left;
+	text-align: center;
+}
+#pie {
+	width:993px;
+	padding-top: 10px;
+	float: left;
+}
+.fecha {
+	color : #696969;
+	font-size: 10px;
+	font-weight: bold;
+}

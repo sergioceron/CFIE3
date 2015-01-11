@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://localhost/cfie</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="connection.autocommit">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <mapping class="mx.ipn.cfie.proyectos.model.Usuario" />
+        <mapping class="mx.ipn.cfie.proyectos.model.UnidadAcademica" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Departamento" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Presupuesto" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Actividad" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Recurso" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Proyecto" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Puesto" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Organizacion" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Evaluacion" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Evento" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Alumno" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Investigador" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Config" />
+        <mapping class="mx.ipn.cfie.proyectos.model.Municipio" />
+    </session-factory>
+</hibernate-configuration>

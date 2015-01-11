@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+            <div>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Datos Generales de la Organización
+                    </f:facet>
+
+                    <h:outputLabel for="nombre" value="Nombre: *"/>
+                    <p:inputText id="nombre" value="#{organizacionBean.organizacion.nombre}" required="true" requiredMessage="El nombre es obligatorio"/>
+
+                    <h:outputLabel for="rfc" value="RFC: *"/>
+                    <p:inputMask id="rfc" value="#{organizacionBean.organizacion.rfc}" required="true" requiredMessage="El RFC es obligatorio" mask="aaaa999999?***" />
+
+                    <h:outputLabel for="sector" value="Sector: *"/>
+                    <p:selectOneRadio id="sector" value="#{organizacionBean.organizacion.sector}" required="true" requiredMessage="El sector es obligatorio">
+                        <f:selectItem itemLabel="Público" itemValue="Publico" />
+                        <f:selectItem itemLabel="Privado" itemValue="Privado" />
+                    </p:selectOneRadio>
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Dirección
+                    </f:facet>
+
+                    <h:outputLabel for="calle" value="Calle: *"/>
+                    <p:inputText id="calle" value="#{organizacionBean.organizacion.calle}" required="true" requiredMessage="La calle es obligatoria"/>
+
+                    <h:outputLabel for="numero" value="Número: *"/>
+                    <p:inputText id="numero" value="#{organizacionBean.organizacion.numero}" required="true" requiredMessage="El numero es obligatorio"/>
+
+                    <h:outputLabel for="colonia" value="Colonia: *"/>
+                    <p:inputText id="colonia" value="#{organizacionBean.organizacion.colonia}" required="true" requiredMessage="La colonia es obligatoria"/>
+
+                    <h:outputLabel for="delegacion" value="Delegación/Municipio: *"/>
+                    <p:selectOneMenu id="delegacion" value="#{organizacionBean.organizacion.delegacion}" required="true" requiredMessage="La delegacion/municipio es obligatorio"
+                            editable="true">
+                        <f:selectItems value="#{organizacionBean.municipios}" var="m" itemLabel="#{m.municipio}" itemValue="#{m.municipio}"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="estado" value="Estado: *"/>
+                    <p:selectOneMenu id="estado" value="#{organizacionBean.organizacion.estado}" required="true" requiredMessage="El estado es obligatorio">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}"/>
+                        <f:selectItem itemLabel="Aguascalientes" itemValue="Aguascalientes"/>
+                        <f:selectItem itemLabel="Baja California Norte" itemValue="Baja California Norte"/>
+                        <f:selectItem itemLabel="Baja California Sur" itemValue="Baja California Sur"/>
+                        <f:selectItem itemLabel="Campeche" itemValue="Campeche"/>
+                        <f:selectItem itemLabel="Chiapas" itemValue="Chiapas"/>
+                        <f:selectItem itemLabel="Chihuahua" itemValue="Chihuahua"/>
+                        <f:selectItem itemLabel="Coahuila" itemValue="Coahuila"/>
+                        <f:selectItem itemLabel="Colima" itemValue="Colima"/>
+                        <f:selectItem itemLabel="Distrito Federal" itemValue="Distrito Federal"/>
+                        <f:selectItem itemLabel="Durango" itemValue="Durango"/>
+                        <f:selectItem itemLabel="Estado de México" itemValue="Mexico"/>
+                        <f:selectItem itemLabel="Guanajuato" itemValue="Guanajuato"/>
+                        <f:selectItem itemLabel="Guerrero" itemValue="Guerrero"/>
+                        <f:selectItem itemLabel="Hidalgo" itemValue="Hidalgo"/>
+                        <f:selectItem itemLabel="Jalisco" itemValue="Jalisco"/>
+                        <f:selectItem itemLabel="Michoacán" itemValue="Michoacan"/>
+                        <f:selectItem itemLabel="Morelos" itemValue="Morelos"/>
+                        <f:selectItem itemLabel="Nayarit" itemValue="Nayarit"/>
+                        <f:selectItem itemLabel="Nuevo León" itemValue="Nuevo Leon"/>
+                        <f:selectItem itemLabel="Oaxaca" itemValue="Oaxaca"/>
+                        <f:selectItem itemLabel="Puebla" itemValue="Puebla"/>
+                        <f:selectItem itemLabel="Querétaro" itemValue="Queretaro"/>
+                        <f:selectItem itemLabel="Quintana Roo" itemValue="Quintana Roo"/>
+                        <f:selectItem itemLabel="San Luis Potosí" itemValue="San Luis Potosi"/>
+                        <f:selectItem itemLabel="Sinaloa" itemValue="Sinaloa"/>
+                        <f:selectItem itemLabel="Sonora" itemValue="Sonora"/>
+                        <f:selectItem itemLabel="Tabasco" itemValue="Tabasco"/>
+                        <f:selectItem itemLabel="Tamaulipas" itemValue="Tamaulipas"/>
+                        <f:selectItem itemLabel="Tlaxcala" itemValue="Tlaxcala"/>
+                        <f:selectItem itemLabel="Veracruz" itemValue="Veracruz"/>
+                        <f:selectItem itemLabel="Yucatán" itemValue="Yucatan"/>
+                        <f:selectItem itemLabel="Zacatecas" itemValue="Zacatecas"/>
+                        <p:ajax update="delegacion" event="change" process="estado" />
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="cp" value="C.P.: "/>
+                    <p:inputMask id="cp" value="#{organizacionBean.organizacion.cp}" required="true" requiredMessage="El C.P. es obligatorio" mask="99999" />
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Contacto
+                    </f:facet>
+                    <h:outputLabel for="telefono" value="Teléfono: "/>
+                    <p:inputMask id="telefono" value="#{organizacionBean.organizacion.telefono}" mask="99-99999999"/>
+
+                    <h:outputLabel for="fax" value="Fax: "/>
+                    <p:inputMask id="fax" value="#{organizacionBean.organizacion.fax}" mask="99-99999999" />
+
+                    <h:outputLabel for="sitioweb" value="Sitio Web: "/>
+                    <p:inputText id="sitioweb" value="#{organizacionBean.organizacion.web}" validatorMessage="La direccion del sitio web no es correcta">
+                        <f:validateRegex pattern="^http\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?$" />
+                    </p:inputText>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Cancelar" action="list" icon="ui-icon-close"
+                                         process="@this" />
+                        <p:commandButton value="Guardar" action="#{organizacionBean.save}" icon="ui-icon-check"
+                                         process="@this,nombre,rfc,sector,calle,numero,colonia,delegacion,estado,cp,telefono,fax,sitioweb" />
+                    </f:facet>
+                </p:panelGrid>
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

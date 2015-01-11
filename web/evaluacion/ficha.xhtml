@@ -1,0 +1,338 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="border:1px solid #000;">
+                <p:messages id="messages" autoUpdate="true" closable="true" />
+
+                <p:panelGrid columns="2" style="width:100%">
+                    <f:facet name="header">
+                        Información del Proyecto
+                    </f:facet>
+                    <h:outputLabel for="folio" value="Folio: "/>
+                    <h:outputText id="folio" value="#{evaluacionBean.proyecto.folioSIP}"/>
+
+                    <h:outputLabel for="titulo" value="Titulo: "/>
+                    <h:outputText id="titulo" value="#{evaluacionBean.proyecto.titulo}"/>
+                </p:panelGrid>
+                <p:panelGrid columns="2" style="width:100%">
+                <f:facet name="header">
+                    Evaluación
+                </f:facet>
+                    <h:outputText value="Instrucciones: Califique los siguientes criterios con puntuaciones del 1 al 5; donde 1 es la calificación mínima y el 5 es la calificación máxima." />
+                    <p:outputPanel>
+                        <table class="calif-head">
+                            <tr>
+                                <td>Puntuación máxima</td>
+                                <td>Puntuación obtenida</td>
+                                <td>Ponderación máxima</td>
+                                <td>Calificación</td>
+                            </tr>
+                        </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="1. ¿Juzga que la idea o desarrollo, que da origen al proyecto, da respuesta a una necesidad reconocible en la realidad?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c1}</td>
+                            <td>5%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c1*.05/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="2. ¿Cree que la revisión bibliográfica de patentes y/o de otra documentación es pertinente y ofrece información útil y adecuada como respaldo a la propuesta?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c2}</td>
+                            <td>4%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c2*.04/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="3. ¿Encuentra que el objetivo del proyecto está orientado al resultado, es alcanzable en el tiempo establecido y es mesurable?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c3}</td>
+                            <td>5%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c3*.05/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="4. ¿Con qué grado de avance considera que llega el proyecto?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c4}</td>
+                            <td>9%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c4*.09/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="5. Bajo el concepto básico de innovación igual a 'una nueva manera de hacer', ¿en qué grado de innovación considera que se encuentra el proyecto?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c5}</td>
+                            <td>9%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c5*.09/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="6. ¿Qué tipo de protección intelectual considera que es viable de aplicar al proyecto?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c6}</td>
+                            <td>4%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c6*.04/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="7. En términos de obsolescencia tecnológica, ¿en qué etapa considera que se encuentra el proyecto?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c7}</td>
+                            <td>7%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c7*.07/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="8. ¿Considera que se describe claramente cuáles son los beneficios para el consumidor?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c8}</td>
+                            <td>9%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c8*.09/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="9. ¿Juzga que la propuesta permite detectar un mercado significativo, así como clientes potenciales para el producto?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c9}</td>
+                            <td>9%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c9*.09/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="10. ¿Considera que los mecanismos de acceso a clientes resultan viables?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c10}</td>
+                            <td>8%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c10*.08/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="11. ¿Juzga que el presupuesto asignado, resulta realista?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c11}</td>
+                            <td>5%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c11*.05/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="12. ¿En qué grado considera que el proyecto minimiza el impacto sobre el ambiente, hace uso racional de los recursos naturales, cumpliendo con normas nacionales e internacionales?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c12}</td>
+                            <td>8%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c12*.08/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="13. ¿En qué intensidad considera que el proyecto generará empleos formales y permanentes?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c13}</td>
+                            <td>5%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c13*.05/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="14. ¿En qué intensidad considera que los resultados del proyecto tendrán impacto positivo sobre el desarrollo y la generación de nuevas oportunidades para grupos vulnerables?"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c14}</td>
+                            <td>7%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c14*.07/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="15. Con respecto al aspecto económico - financiero, ¿considera que el proyecto es riesgoso?	"/>
+                    <p:outputPanel>
+                    <table class="calif">
+                        <tr>
+                            <td>5</td>
+                            <td>#{evaluacionBean.proyecto.evaluacion.c15}</td>
+                            <td>6%</td>
+                            <td>
+                                <h:outputText value="#{(evaluacionBean.proyecto.evaluacion.c15*.06/5)*100}">
+                                    <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                </h:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                    </p:outputPanel>
+
+                    <h:outputLabel value="Total: " style="text-align: right"/>
+                    <p:outputPanel>
+                        <table class="calif">
+                            <tr>
+                                <td>75</td>
+                                <td>#{evaluacionBean.proyecto.evaluacion.puntuacionTotal}</td>
+                                <td>100%</td>
+                                <td>
+                                    <h:outputText value="#{evaluacionBean.proyecto.evaluacion.calificacionTotal*100}">
+                                        <f:convertNumber maxFractionDigits="2" locale="es_MX"/>
+                                    </h:outputText>
+                                </td>
+                            </tr>
+                        </table>
+                    </p:outputPanel>
+
+                    <h:outputText value="#{evaluacionBean.proyecto.evaluacion.observaciones}" style="width:100%"/>
+                    <h:outputLabel value=""/>
+
+                </p:panelGrid>
+                <p:panelGrid columns="1" style="width:100%">
+                    <f:facet name="header">
+                        Dictamen
+                    </f:facet>
+                    <p:outputPanel>
+                        <table class="dictamen" width="100%">
+                            <tr>
+                                <td style="background: #000; color: #fff">Calificación</td>
+                                <td style="background: #000; color: #fff">Categoria</td>
+                                <td style="background: #000; color: #fff">Clasificación asignanda</td>
+                            </tr>
+                            <tr>
+                                <td>0-40</td>
+                                <td>Proyecto no elegible</td>
+                                <td><h:graphicImage url="/resources/ok.jpg" width="20" height="20" rendered="#{evaluacionBean.proyecto.evaluacion.dictamen eq 'No Elegible'}"/></td>
+                            </tr>
+                            <tr>
+                                <td>41-69</td>
+                                <td>Condicionado. Con potencia pero debe reformular y atender observaciones</td>
+                                <td><h:graphicImage url="/resources/ok.jpg" width="20" height="20" rendered="#{evaluacionBean.proyecto.evaluacion.dictamen eq 'Condicionado'}"/></td>
+                             </tr>
+                            <tr>
+                                <td>70-100</td>
+                                <td>Proyecto elegible</td>
+                                <td><h:graphicImage url="/resources/ok.jpg" width="20" height="20" rendered="#{evaluacionBean.proyecto.evaluacion.dictamen eq 'Elegible'}"/></td>
+                            </tr>
+                        </table>
+                    </p:outputPanel>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Regresar" action="evaluaciones" icon="ui-icon-close"
+                                         process="@this"/>
+                    </f:facet>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

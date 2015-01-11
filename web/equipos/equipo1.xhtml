@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel style="border:1px solid #000;">
+                <p:messages id="messages" autoUpdate="true" closable="true" />
+
+
+                <p:panelGrid columns="2" style="width:100%">
+                    <f:facet name="header">
+                        Información del Proyecto
+                    </f:facet>
+                    <h:outputLabel for="folio" value="Folio: "/>
+                    <h:outputText id="folio" value="#{equiposBean.proyecto.folioSIP}"/>
+
+                    <h:outputLabel for="titulo" value="Titulo: "/>
+                    <h:outputText id="titulo" value="#{equiposBean.proyecto.titulo}"/>
+
+                    <h:outputLabel for="director" value="Director: "/>
+                    <h:outputText id="director" value="#{equiposBean.proyecto.director}"/>
+                </p:panelGrid>
+                <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                    Miembros
+                </f:facet>
+                    <p:dataTable id="equipo" var="e" value="#{equiposBean.equipo}">
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{e.nombre}" />
+                        </p:column>
+                        <p:column headerText="Apellido Paterno" >
+                            <h:outputText value="#{e.apellidoPaterno}" />
+                        </p:column>
+                        <p:column headerText="Apellido Materno" >
+                            <h:outputText value="#{e.apellidoMaterno}" />
+                        </p:column>
+                        <p:column headerText="Tipo" >
+                            <h:outputText value="#{e.role}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Regresar" action="equipos" icon="ui-icon-close"
+                                         process="@this"/>
+                    </f:facet>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

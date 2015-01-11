@@ -1,0 +1,91 @@
+.ui-panelgrid td {
+    border: 0px !important;
+    padding: 10px 0px 10px 4px;
+}
+
+label{
+    text-align: left;
+    font-weight: bolder;
+    font-size: 10px;
+}
+
+.ui-dialog{
+    position:fixed!important;
+    top: 200px!important;
+}
+
+.avatar {
+    float: left;
+    vertical-align: middle;
+    height: 500px;
+    padding-right: 50px;
+    zoom: 80%;
+}
+
+.list-images img {
+    display: block;
+    padding: 10px;
+}
+
+.calif{
+    width: 100%;
+}
+
+.calif td{
+    text-align: center;
+    border: 1px solid #000!important;
+    width: 25%;
+}
+.dictamen,
+.dictamen td{
+    border: 1px solid #000!important;
+}
+
+
+.summary{
+    width: 100%;
+}
+
+.summary td{
+    text-align: center;
+}
+
+.summary td.set{
+    text-align: right;
+    width: 200px;
+}
+
+.summary td.head{
+    background-color: #ccc;
+}
+
+.border{
+    border: 1px solid #000;
+}
+
+div.title-report{
+    color: #ff0000;
+    font-weight: bolder;
+    font-size: 16px;
+    text-align: center;
+    height: 30px;
+}
+
+div.subtitle-report{
+    font-size: 14px;
+    text-align: left;
+    padding: 10px 0px 5px 0px;
+    font-weight: bolder;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+    color: #036;
+}
+
+hr{
+    padding: 15px 0px 15px 0px;
+    border: 0px;
+}
+
+.list-images a img{
+    zoom: 80%;
+}

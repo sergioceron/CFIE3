@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+            <div>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Datos Generales de la Organización
+                    </f:facet>
+
+                    <h:outputLabel for="nombre" value="Nombre: "/>
+                    <h:outputText id="nombre" value="#{organizacionBean.organizacion.nombre}" />
+
+                    <h:outputLabel for="rfc" value="RFC: "/>
+                    <h:outputText id="rfc" value="#{organizacionBean.organizacion.rfc}" />
+
+                    <h:outputLabel for="sector" value="Sector: "/>
+                    <h:outputText id="sector" value="#{organizacionBean.organizacion.sector}" />
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Dirección
+                    </f:facet>
+
+                    <h:outputLabel for="calle" value="Calle: "/>
+                    <h:outputText id="calle" value="#{organizacionBean.organizacion.calle}" />
+
+                    <h:outputLabel for="numero" value="Número: "/>
+                    <h:outputText id="numero" value="#{organizacionBean.organizacion.numero}" />
+
+                    <h:outputLabel for="colonia" value="Colonia: "/>
+                    <h:outputText id="colonia" value="#{organizacionBean.organizacion.colonia}" />
+
+                    <h:outputLabel for="delegacion" value="Delegacion/Municipio: "/>
+                    <h:outputText id="delegacion" value="#{organizacionBean.organizacion.delegacion}" />
+
+                    <h:outputLabel for="estado" value="Estado: "/>
+                    <h:outputText id="estado" value="#{organizacionBean.organizacion.estado}" />
+
+                    <h:outputLabel for="cp" value="C.P.: "/>
+                    <h:outputText id="cp" value="#{organizacionBean.organizacion.cp}" />
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Contacto
+                    </f:facet>
+                    <h:outputLabel for="telefono" value="Telefono: "/>
+                    <h:outputText id="telefono" value="#{organizacionBean.organizacion.telefono}"/>
+
+                    <h:outputLabel for="fax" value="Fax: "/>
+                    <h:outputText id="fax" value="#{organizacionBean.organizacion.fax}" />
+
+                    <h:outputLabel for="sitioweb" value="Sitio Web: "/>
+                    <h:outputText id="sitioweb" value="#{organizacionBean.organizacion.web}" />
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Editar" action="edit" icon="ui-icon-pencil"
+                                         process="@this" ajax="false"
+                                         rendered="#{((sessionBean.usuario.role eq 'Jefe de Departamento') or (sessionBean.usuario.role eq 'Colaborador') or (sessionBean.usuario.role eq 'Administrador'))}"/>
+                        <p:commandButton value="Ver listado" action="list" icon="ui-icon-clipboard"
+                                         process="@this" ajax="false"/>
+                    </f:facet>
+                </p:panelGrid>
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

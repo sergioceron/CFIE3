@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="border:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Periodo de Evaluación
+                    </f:facet>
+                    <h:outputLabel for="inicio" value="Fecha de Inicio: "/>
+                    <p:calendar id="inicio" value="#{configBean.config.periodoInicio}"/>
+
+                    <h:outputLabel for="fin" value="Fecha de Termino: "/>
+                    <p:calendar id="fin" value="#{configBean.config.periodoFinal}"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" action="#{configBean.save}" icon="ui-icon-check"
+                                         process="@this,inicio,fin" />
+                    </f:facet>
+                </p:panelGrid>
+
+                <p:outputPanel style="display:block;text-align:right">
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/excel.png" />
+                        <p:dataExporter type="xls" target="proyectos" fileName="evaluadores"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/pdf.png" />
+                        <p:dataExporter type="pdf" target="proyectos" fileName="evaluadores"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/csv.png" />
+                        <p:dataExporter type="csv" target="proyectos" fileName="evaluadores" />
+                    </h:commandLink>
+                </p:outputPanel>
+
+                <p:dataTable id="proyectos" var="_proyecto" value="#{evaluacionBean.evaluaciones}" editable="true"
+                             paginator="true" rows="15"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15"
+                             emptyMessage="No hay proyectos para asignar evaluadores"
+                             rowEditListener="">
+
+                    <p:ajax event="rowEdit" listener="#{evaluacionBean.onEdit}" />
+
+                    <p:column>
+                        <f:facet name="header">Folio SIP</f:facet>
+                        <h:outputText value="#{_proyecto.folioSIP}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Titulo</f:facet>
+                        <h:outputText value="#{_proyecto.titulo}" />
+                    </p:column>
+                    <p:column style="display:none">
+                        <f:facet name="header">Evaluador</f:facet>
+                        <h:outputText value="#{_proyecto.evaluador}" />
+                    </p:column>
+                    <p:column exportable="false">
+                        <f:facet name="header">Evaluador</f:facet>
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{_proyecto.evaluador}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{_proyecto.evaluador}" converter="mx.ipn.cfie.proyectos.converters.usuarioConverter">
+                                    <f:selectItems value="#{evaluacionBean.evaluadores}"
+                                                   var="e"
+                                                   itemLabel="#{e}"
+                                                   itemValue="#{e}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Evaluado</f:facet>
+                        <h:outputText value="#{_proyecto.evaluado ? 'Evaluado' : 'No Evaluado'} (#{_proyecto.evaluado ? _proyecto.evaluacion.dictamen : ' '})" />
+                    </p:column>
+                    <p:column headerText="Opciones" style="width:50px" exportable="false">
+                        <p:rowEditor rendered="#{not _proyecto.evaluado}" />
+                        <p:commandButton icon="ui-icon-search" action="#{evaluacionBean.ficha(_proyecto)}" ajax="false" rendered="#{_proyecto.evaluado}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:commandButton value="Regresar" action="/panel.xhtml" icon="ui-icon-close" process="@this" />
+
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

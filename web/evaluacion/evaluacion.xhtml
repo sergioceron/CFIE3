@@ -1,0 +1,199 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="border:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <p:panelGrid columns="2" style="width:100%">
+                    <f:facet name="header">
+                        Información del Proyecto
+                    </f:facet>
+                    <h:outputLabel for="folio" value="Folio: "/>
+                    <h:outputText id="folio" value="#{evaluacionBean.proyecto.folioSIP}"/>
+
+                    <h:outputLabel for="titulo" value="Titulo: "/>
+                    <h:outputText id="titulo" value="#{evaluacionBean.proyecto.titulo}"/>
+                </p:panelGrid>
+                <p:panelGrid columns="2" style="width:100%">
+                <f:facet name="header">
+                    Evaluación
+                </f:facet>
+                    <h:outputText value="Instrucciones: Califique los siguientes criterios con puntuaciones del 1 al 5; donde 1 es la calificación mínima y el 5 es la calificación máxima." />
+                    <h:outputText value="" />
+
+                    <h:outputLabel for="_1" value="1. ¿Juzga que la idea o desarrollo, que da origen al proyecto, da respuesta a una necesidad reconocible en la realidad?"/>
+                    <p:selectOneMenu id="_1" value="#{evaluacionBean.proyecto.evaluacion.c1}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_2" value="2. ¿Cree que la revisión bibliográfica de patentes y/o de otra documentación es pertinente y ofrece información útil y adecuada como respaldo a la propuesta?"/>
+                    <p:selectOneMenu id="_2" value="#{evaluacionBean.proyecto.evaluacion.c2}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_3" value="3. ¿Encuentra que el objetivo del proyecto está orientado al resultado, es alcanzable en el tiempo establecido y es mesurable?"/>
+                    <p:selectOneMenu id="_3" value="#{evaluacionBean.proyecto.evaluacion.c3}" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_4" value="4. ¿Con qué grado de avance considera que llega el proyecto?"/>
+                    <p:selectOneMenu id="_4" value="#{evaluacionBean.proyecto.evaluacion.c4}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_5" value="5. Bajo el concepto básico de innovación igual a 'una nueva manera de hacer', ¿en qué grado de innovación considera que se encuentra el proyecto?"/>
+                    <p:selectOneMenu id="_5" value="#{evaluacionBean.proyecto.evaluacion.c5}" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_6" value="6. ¿Qué tipo de protección intelectual considera que es viable de aplicar al proyecto?"/>
+                    <p:selectOneMenu id="_6" value="#{evaluacionBean.proyecto.evaluacion.c6}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_7" value="7. En términos de obsolescencia tecnológica, ¿en qué etapa considera que se encuentra el proyecto?"/>
+                    <p:selectOneMenu id="_7" value="#{evaluacionBean.proyecto.evaluacion.c7}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_8" value="8. ¿Considera que se describe claramente cuáles son los beneficios para el consumidor?"/>
+                    <p:selectOneMenu id="_8" value="#{evaluacionBean.proyecto.evaluacion.c8}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_9" value="9. ¿Juzga que la propuesta permite detectar un mercado significativo, así como clientes potenciales para el producto?"/>
+                    <p:selectOneMenu id="_9" value="#{evaluacionBean.proyecto.evaluacion.c9}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_10" value="10. ¿Considera que los mecanismos de acceso a clientes resultan viables?"/>
+                    <p:selectOneMenu id="_10" value="#{evaluacionBean.proyecto.evaluacion.c10}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_11" value="11. ¿Juzga que el presupuesto asignado, resulta realista?"/>
+                    <p:selectOneMenu id="_11" value="#{evaluacionBean.proyecto.evaluacion.c11}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_12" value="12. ¿En qué grado considera que el proyecto minimiza el impacto sobre el ambiente, hace uso racional de los recursos naturales, cumpliendo con normas nacionales e internacionales?"/>
+                    <p:selectOneMenu id="_12" value="#{evaluacionBean.proyecto.evaluacion.c12}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_13" value="13. ¿En qué intensidad considera que el proyecto generará empleos formales y permanentes?"/>
+                    <p:selectOneMenu id="_13" value="#{evaluacionBean.proyecto.evaluacion.c13}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_14" value="14. ¿En qué intensidad considera que los resultados del proyecto tendrán impacto positivo sobre el desarrollo y la generación de nuevas oportunidades para grupos vulnerables?"/>
+                    <p:selectOneMenu id="_14" value="#{evaluacionBean.proyecto.evaluacion.c14}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="_15" value="15. Con respecto al aspecto económico - financiero, ¿considera que el proyecto es riesgoso?	"/>
+                    <p:selectOneMenu id="_15" value="#{evaluacionBean.proyecto.evaluacion.c15}" required="true" style="width:75%">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <f:selectItem itemLabel="5" itemValue="5"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="obs" value="Observaciones y recomendaciones más importantes al proyecto	"/>
+                    <h:outputLabel value="" style="width: 150px;display:block"/>
+
+                    <p:inputTextarea id="obs" value="#{evaluacionBean.proyecto.evaluacion.observaciones}" style="width:100%"/>
+                    <h:outputLabel value=""/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar Evaluación" action="#{evaluacionBean.save}" icon="ui-icon-check"
+                                         process="@all"/>
+
+                        <p:commandButton value="Regresar" action="evaluaciones" icon="ui-icon-close"
+                                         process="@this"/>
+                    </f:facet>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

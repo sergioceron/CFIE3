@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head><title>Welcome to JSF_PrimeFaces_Hibernate Project</title></h:head>
+<body>
+<h:form>
+    <table>
+        <tr>
+            <td><h:outputLabel for="name" value="Nombre:" /></td>
+            <td><p:inputText id="name" value="#{usuarioBean.usuario.username}" required="true" requiredMessage="Usuario es obligatorio"/></td>
+        </tr>
+        <tr>
+            <td><h:outputLabel for="surname" value="Password:" /></td>
+            <td><p:inputText id="surname" value="#{usuarioBean.usuario.password}" required="true" requiredMessage="Password es obligatorio"/> </td>
+        </tr>
+        <tr>
+            <td><p:commandButton id="submit" value="Save" action="#{usuarioBean.save}" ajax="false"/></td>
+        </tr>
+    </table>
+</h:form>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+        <p:messages id="messages" autoUpdate="true" closable="true"/>
+        <h:form id="form1">
+            <div>
+
+                <p:panelGrid columns="2" style="width:100%">
+                    <f:facet name="header">
+                        Datos del Proyecto
+                    </f:facet>
+
+                    <h:outputLabel for="folio" value="Folio: "/>
+                    <h:outputText id="folio" value="#{equiposBean.proyecto.folioSIP}" />
+
+                    <h:outputLabel for="titulo" value="Título: "/>
+                    <h:outputText id="titulo" value="#{equiposBean.proyecto.titulo}" />
+
+                    <h:outputLabel for="director" value="Director: *"/>
+                    <h:outputText id="director" value="#{equiposBean.proyecto.director}" />
+                </p:panelGrid>
+                <hr />
+                <p:outputPanel id="op">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                            <td>Categoría</td>
+                            <td>Nivel de Estudios</td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 1</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno1.nombre}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno1.apellidoPaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno1.apellidoMaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno1.categoria}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno1.nivelEstudios}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 2</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno2.nombre}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno2.apellidoPaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno2.apellidoMaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno2.categoria}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno2.nivelEstudios}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 3</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno3.nombre}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno3.apellidoPaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno3.apellidoMaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno3.categoria}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno3.nivelEstudios}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 4</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno4.nombre}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno4.apellidoPaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno4.apellidoMaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno4.categoria}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno4.nivelEstudios}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alumno 5</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno5.nombre}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno5.apellidoPaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno5.apellidoMaterno}"  />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno5.categoria}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.alumno5.nivelEstudios}" />
+                            </td>
+                        </tr>
+                    </table>
+                </p:outputPanel>
+                <hr />
+                <p:outputPanel id="op1">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                        </tr>
+                        <tr>
+                            <td>Investigador 1</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador1.nombre}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador1.apellidoPaterno}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador1.apellidoMaterno}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Nombre(s)</td>
+                            <td>A. Paterno</td>
+                            <td>A. Materno</td>
+                        </tr>
+                        <tr>
+                            <td>Investigador 2</td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador2.nombre}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador2.apellidoPaterno}" />
+                            </td>
+                            <td>
+                                <h:outputText value="#{equiposBean.proyecto.investigador2.apellidoMaterno}" />
+                            </td>
+                        </tr>
+                    </table>
+                </p:outputPanel>
+
+                <p:commandButton value="Regresar" action="list" icon="ui-icon-close"
+                                 process="@this" />
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

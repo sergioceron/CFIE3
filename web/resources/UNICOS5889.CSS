@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+/*IPN*/
+/*CVB CLASES*/
+#fecha_act {
+	color: #CCC;
+	text-align: center;
+}
+.lema_IPN_prin {
+	background: #FFF !important;
+}
+.caja {
+	font-size:10px;
+	border: 2px Solid #AAACAB;
+	width:150px;
+	height:17px;
+	margin-left: 10px;
+}
+body {
+	margin : 0;
+	background: #f2f2f2;
+} 
+a {
+	text-decoration : none;
+}
+.titulo {
+	text-align : center;
+	color : #FFF;
+	vertical-align: middle;
+	font-size: 24px;
+	background-color: #0A95CD;
+}
+.header {
+}
+.footer, .footer a {
+	text-align : center;
+	background-color : #0A95CD;
+	color: #FFF;
+}
+.enlaces_frecuentes {
+	padding-left : 5px;
+	padding-top: 3px;
+	text-align : right;
+}
+.enlaces_frecuentes a {
+	color: #FFF;
+	font-size: 10px;
+} 
+.nav_perfiles {
+	cursor : pointer;
+}
+.nav_perfiles a {
+	color : #000;
+	text-transform : uppercase;
+}
+.nav_perfiles a:hover {
+	text-decoration : underline;
+} 
+.nav_gral {
+	cursor : pointer;
+}
+.nav_gral a {
+	color : #000;
+}
+.nav_gral a:hover { text-decoration : underline; } 
+.nav_gral_2doNivel {
+	cursor : pointer;
+	background: #f1f1f1;
+}
+.nav_gral_2doNivel a {
+	color : #000;
+}
+.nav_gral_2doNivel a:hover {
+	text-decoration : underline;
+}
+.nav_gral_sel { background-color : #ffffff; cursor : pointer; }
+.nav_gral_sel a {
+	color : #000;
+} 
+.nav_gral_sel a:hover { text-decoration : underline; } 
+.dependencia {
+	color : #fff;
+}
+.nav_general:hover { background-color : #bbbbbb; } 
+.contenido {
+	text-align : justify;
+}
+.fondocontenido {
+}
+.contenido a {
+	text-decoration : none;
+	color : #bf292d;
+} 
+.contenido a:hover { text-decoration : underline; color : #bf292d; } 
+.contenido a:visited { text-decoration : none; color : #bc7141; } 
+.imagen {
+	border : 2px solid #ccc;
+	padding-left : 3px;
+	padding-top : 16px;
+	padding-right : 3px;
+	padding-bottom : 19px;
+	text-align : center;
+	color : #666;
+} 
+.borde_derecho { border-right : 1px solid #d4d4d4; } 
+.titulo_nav {
+	font-size : 13px;
+	text-align : center;
+	letter-spacing : 2px;
+	color : #747474;
+	font-weight : bold;
+}
+.titulo_nav a {
+	font-size : 13px;
+	text-align : center;
+	letter-spacing : 2px;
+	color : #747474;
+	font-weight : bold;
+} 
+.titulo_resultado a { color : #0000ff; } .titulo_resultado a:hover { text-decoration : underline; } .descripcion_resultado { padding-left : 18px; } .enlace_resultado { color : #336600; } .marcador_busqueda { font-weight : bold; color : #6c4100; } .controles, .controles a {
+	font-size : 11px;
+	text-decoration : none;
+	color : #000;
+}
+.fondo_menu_izquierdo {
+} 
+.titulomap a {
+	color : #666;
+	text-align : left;
+} .fondocontenido { background-image : none; } 
+.ruta_gral {
+	background : #fff; 
+	padding-right : 15px; 
+	color : #000;
+}
+.ruta_gral a {
+	font-size : 13px;
+	color : #000;
+}
+.middle { float : left; position : relative; width : 540px; border-top : 2px solid; margin-top : 0; padding-top : 10px; padding-bottom : 0; margin-bottom : 10px; } .middle img { float : left; position : relative; left : -3px; top : -3px; padding : 6px; padding-left : 7px; padding-top : 7px; padding-bottom : 7px; margin-bottom : 10px; } .middle_content { float : left; margin-left : 0; margin-right : 20px; margin-bottom : 5px; padding-bottom : 0; width : 200px; min-height : 10px; height : inherit; } .middle_content h3 { margin-top : 5px; margin-left : 10px; margin-right : 10px; font-size : 1.1em; font-weight : bold; } .middle_content p { margin-left : 5px; margin-right : 10px; } .middle_links { width : 270px; float : left; padding-top : 0; padding-left : 20px; min-height : 120px; padding-bottom : 5px; border-left : 1px solid #eae9e6; margin-top : 0; margin-bottom : 0; margin-left : 0; margin-right : 0; } .middle_links li { padding-bottom : 4px; list-style-image : url(""); line-height : 14px; } .middle_links a { border-bottom : 1px dotted #81785a; text-decoration : none; } .middle_links a:hover { text-decoration : underline; }  #menu_int { margin : 5px; width : 220px; position : relative; float : left; vertical-align : middle; border-top-width : 1px; border-right-width : 1px; border-bottom-width : 1px; border-left-width : 1px; border-top-style : none; border-right-style : none; border-bottom-style : none; border-left-style : none; list-style-position : outside; list-style-type : square; text-indent : 10px; white-space : normal; padding : 0; display : block; } #pagina_principal { padding : 0; margin : 0; width : 546px; position : relative; float : left; }

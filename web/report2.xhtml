@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="template.xhtml">
+
+    <ui:define name="body">
+        <h:form id="form">
+            <p:panel id="content" style="order:1px solid #000;">
+                <p:growl autoUpdate="true" id="messages"/>
+
+                <div class="title-report">Distribución de Propuestas de PIE en base a su Tipo</div>
+
+                <hr/>
+                <div class="subtitle-report">Reporte generado: </div>
+                <p:outputPanel>
+                <p:barChart id="basic" value="#{report2Bean.allProyectosByTipo}" legendPosition="e"
+                            title="Todos los Proyectos por dictamen" animate="true" zoom="true" style="height: 200px; width: 350px; float: left"/>
+
+                <p:pieChart id="sample" value="#{report2Bean.proyectosByTipo}" legendPosition="w"
+                            title="Proyectos por dictamen del periodo actual" style="width: 350px; height: 200px; margin-left: 370px;" />
+                </p:outputPanel>
+                <hr/>
+                <div class="subtitle-report">Tabla de información: </div>
+                <p:outputPanel>
+                <table class="summary" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td></td>
+                        <ui:repeat value="#{report2Bean.allProyectosByTipo.series.get(0).data.keySet().toArray()}" var="key">
+                            <td class="head border">
+                                <h:outputText value="#{key}"/>
+                            </td>
+                        </ui:repeat>
+                        <td class="head border">Total</td>
+                    </tr>
+                <ui:repeat value="#{report2Bean.allProyectosByTipo.series}" var="serie">
+                    <tr>
+                        <td class="set">
+                            <h:outputText value="#{serie.label}"/>
+                        </td>
+                        <ui:repeat value="#{serie.data.values().toArray()}" var="vals">
+                            <td class="border">
+                                <h:outputText value="#{vals}"/>
+                            </td>
+                        </ui:repeat>
+                        <td class="border"><h:outputText value="#{report2Bean.totalCriterio.get(serie.label)}"/></td>
+                    </tr>
+                </ui:repeat>
+                    <tr>
+                        <td class="total border">Propuestas de PIE Registradas </td>
+                        <ui:repeat value="#{report2Bean.totalMonths.values().toArray()}" var="total">
+                            <td class="border">
+                                <h:outputText value="#{total}"/>
+                            </td>
+                        </ui:repeat>
+                        <td class="border">#{report2Bean.totalFinal}</td>
+                    </tr>
+                </table>
+                </p:outputPanel>
+                <hr/>
+                <hr/>
+                <div class="subtitle-report">Elboró: </div>
+                <p:outputPanel>
+                <table width="100%">
+                    <tr>
+                        <td>Elaboró: #{sessionBean.usuario}</td>
+                        <td>Fecha:
+                            <h:outputText value="#{report2Bean.date}">
+                                <f:convertDateTime dateStyle="medium" locale="es_MX"/>
+                            </h:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Perfil: #{sessionBean.usuario.role}</td>
+                        <td>Hora:
+                            <h:outputText value="#{report2Bean.date}">
+                                <f:convertDateTime timeStyle="short" type="time" locale="es_MX" timeZone="GMT-6"/>
+                            </h:outputText>
+                        </td>
+                    </tr>
+                </table>
+                </p:outputPanel>
+            </p:panel>
+
+            <p:commandButton value="Regresar" action="reportes" icon="ui-icon-close" process="@this" ajax="false" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

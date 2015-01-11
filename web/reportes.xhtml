@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="template.xhtml">
+
+    <ui:define name="body">
+        <h:form id="form1">
+            <div id="content" style="text-align:center;border:1px solid #000;">
+                <p:messages id="messages" autoUpdate="true" />
+                <div class="avatar">
+                    <h:graphicImage value="/resources/#{sessionBean.usuario.role}.png" width="200" />
+                </div>
+                <div class="list-images">
+                    <h:commandLink action="/report1.xhtml">
+                        <h:graphicImage value="/resources/buttons/r1.png" />
+                    </h:commandLink>
+                    <h:commandLink action="/report2.xhtml">
+                        <h:graphicImage value="/resources/buttons/r2.png" />
+                    </h:commandLink>
+                    <h:commandLink action="/report3.xhtml">
+                        <h:graphicImage value="/resources/buttons/r3.png" />
+                    </h:commandLink>
+                    <h:commandLink action="/report4.xhtml">
+                        <h:graphicImage value="/resources/buttons/r4.png" />
+                    </h:commandLink>
+                    <br/>
+                    <p:commandButton value="Regresar" action="/panel.xhtml" icon="ui-icon-close" process="@this" />
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

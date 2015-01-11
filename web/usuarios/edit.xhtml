@@ -1,0 +1,221 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+            <div align="center">
+
+                <p:panelGrid columns="6" style="width:100%">
+                    <f:facet name="header">
+                        Datos de la cuenta
+                    </f:facet>
+
+                    <h:outputLabel for="username" value="Nombre de usuario: *"/>
+                    <p:inputText id="username" value="#{usuarioBean.usuario.username}" readonly="true"/>
+
+                    <h:outputLabel for="password" value="Contraseña: *"/>
+                    <p:password id="password" value="#{usuarioBean.repassword}"/>
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Tipo de usuario y Privilegios
+                    </f:facet>
+
+                    <h:outputLabel for="role" value="Perfil: *"/>
+                    <p:selectOneMenu id="role" value="#{usuarioBean.usuario.role}" required="true" requiredMessage="El perfil es obligatorio">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                        <f:selectItem itemLabel="Administrador" itemValue="Administrador"/>
+                        <f:selectItem itemLabel="Colaborador" itemValue="Colaborador"/>
+                        <f:selectItem itemLabel="Director de Proyecto" itemValue="Director de Proyecto"/>
+                        <f:selectItem itemLabel="Evaluador" itemValue="Evaluador"/>
+                        <f:selectItem itemLabel="Jefe de Departamento" itemValue="Jefe de Departamento"/>
+                        <f:selectItem itemLabel="Representante" itemValue="Representante"/>
+                        <p:ajax update="permisos" event="change" process="role" listener="#{usuarioBean.changeRole}" />
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="permisos" value="Privilegios: "/>
+                    <p:inputTextarea id="permisos" value="#{usuarioBean.permisos}" rows="10" cols="50" readonly="true"/>
+                </p:panelGrid>
+
+                <p:panelGrid columns="6" style="width:100%">
+                    <f:facet name="header">
+                        Datos del usuario
+                    </f:facet>
+
+                    <h:outputLabel for="nombre" value="Nombre: *"/>
+                    <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" required="true" requiredMessage="El nombre es obligatorio"
+                                 validatorMessage="El nombre solo acepta letras">
+                        <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                    </p:inputText>
+
+                    <h:outputLabel for="apaterno" value="Apellido paterno: *" style="display:block;width:95px"/>
+                    <p:inputText id="apaterno" value="#{usuarioBean.usuario.apellidoPaterno}" required="true" requiredMessage="El apellido paterno es obligatorio"
+                                 validatorMessage="El apellido paterno solo acepta letras">
+                        <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                    </p:inputText>
+
+                    <h:outputLabel for="amaterno" value="Apellido materno: *"/>
+                    <p:inputText id="amaterno" value="#{usuarioBean.usuario.apellidoMaterno}" required="true" requiredMessage="El apellido materno es obligatorio"
+                                 validatorMessage="El apellido materno solo acepta letras">
+                        <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                    </p:inputText>
+
+                    <h:outputLabel for="rfc" value="RFC: *"/>
+                    <p:inputMask id="rfc" value="#{usuarioBean.usuario.rfc}" required="true" requiredMessage="El RFC es obligatorio" mask="aaaa999999?***"/>
+
+                    <h:outputLabel for="organizacion" value="Organización: *"/>
+                    <p:selectOneMenu id="organizacion" value="#{usuarioBean.usuario.organizacion}" style="width:75%"
+                                     converter="mx.ipn.cfie.proyectos.converters.organizacionConverter">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                        <f:selectItems value="#{organizacionBean.organizaciones}"
+                                       var="e"
+                                       itemLabel="#{e.nombre}"
+                                       itemValue="#{e}" />
+                        <p:ajax update="ipn" event="change" process="organizacion" />
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="telefono" value="Teléfono: *"/>
+                    <p:inputMask id="telefono" value="#{usuarioBean.usuario.telefonoOficina}" mask="99-99999999"/>
+
+                    <h:outputLabel for="extension" value="Extensión: *"/>
+                    <p:inputMask id="extension" value="#{usuarioBean.usuario.extension}" mask="99999"/>
+
+                    <h:outputLabel for="movil" value="Móvil: *"/>
+                    <p:inputMask id="movil" value="#{usuarioBean.usuario.movil}" mask="99-99999999"/>
+
+                    <h:outputLabel for="mail" value="Correo electronico: *" style="display:block;width:105px"/>
+                    <p:inputText id="mail" value="#{usuarioBean.usuario.email}" validatorMessage="El correo electronico no es valido">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </p:inputText>
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%" id="ipn">
+                    <f:facet name="header">
+                        Solo para personal del IPN
+                    </f:facet>
+
+                    <h:outputLabel for="noempleado" value="No. de empleado: *"/>
+                    <p:inputMask id="noempleado" value="#{usuarioBean.usuario.numeroEmpleado}"
+                                 disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}" mask="9999999"/>
+
+                    <h:outputLabel for="plaza" value="Tipo de Plaza en el IPN: "/>
+                    <p:selectOneMenu id="plaza" value="#{usuarioBean.usuario.plaza}" style="width:75%" editable="true"
+                                     disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                        <f:selectItem itemLabel="Profesor asignatura" itemValue="Profesor asignatura"/>
+                        <f:selectItem itemLabel="Profesor asistente" itemValue="Profesor asistente"/>
+                        <f:selectItem itemLabel="Profesor asociado" itemValue="Profesor asociado"/>
+                        <f:selectItem itemLabel="Profesor titular" itemValue="Profesor titular"/>
+                        <f:selectItem itemLabel="Técnico docente de asignatura" itemValue="Técnico docente de asignatura"/>
+                        <f:selectItem itemLabel="Técnico docente auxiliar" itemValue="Técnico docente auxiliar"/>
+                        <f:selectItem itemLabel="Técnico docente asociado" itemValue="Técnico docente asociado"/>
+                        <f:selectItem itemLabel="Técnico docente titular" itemValue="Técnico docente titular"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="nivelacademico" value="Grado Académico: *"/>
+                    <p:selectOneMenu id="nivelacademico" value="#{usuarioBean.usuario.nivelAcademico}" style="width:75%"
+                                     disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                        <f:selectItem itemLabel="Superior" itemValue="Superior"/>
+                        <f:selectItem itemLabel="Posgrado" itemValue="Posgrado"/>
+                    </p:selectOneMenu>
+
+
+                    <h:outputLabel for="unidadacademica" value="Unidad Académica: *"/>
+                    <p:outputPanel style="display:block;margin-top:10px;">
+                        <p:selectOneMenu id="unidadacademica" value="#{usuarioBean.usuario.unidadAcademica}"
+                                         style="width:75%" disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                            <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                            <f:selectItems value="#{collectionsBean.unidadesAcademicas}" var="ua"
+                                           itemLabel="#{ua.unidad}" itemValue="#{ua.unidad}"/>
+                        </p:selectOneMenu>
+                        <img src="/resources/mas.png" alt="Agregar" onclick="dlg1.show()" style="visibility: #{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional' ? 'hidden' : ''}"/>
+                        <p:dialog header="Nueva Unidad Academica" widgetVar="dlg1" resizable="false" position="center">
+                            <h:panelGrid columns="2" style="margin-bottom:10px">
+                                <h:outputLabel for="unidad" value="Unidad Academica:"/>
+                                <p:inputText id="unidad" value="#{collectionsBean.unidadAcademica.unidad}"
+                                             required="true" requiredMessage="El nombre de la unidad academica es necesario"/>
+                            </h:panelGrid>
+                            <p:commandButton value="Submit" process="@this,unidad"
+                                             actionListener="#{collectionsBean.saveUnidadAcademica}"
+                                             update="unidadacademica"
+                                             partialSubmit="true" oncomplete="dlg1.hide();"/>
+                        </p:dialog>
+                    </p:outputPanel>
+
+                    <h:outputLabel for="departamento" value="Departamento: *"/>
+                    <p:outputPanel style="display:block;margin-top:10px;">
+                        <p:selectOneMenu id="departamento" value="#{usuarioBean.usuario.departamento}" style="width:75%"
+                                         disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                            <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                            <f:selectItems value="#{collectionsBean.departamentos}" var="dep"
+                                           itemLabel="#{dep.departamento}" itemValue="#{dep.departamento}"/>
+                        </p:selectOneMenu>
+                        <img src="/resources/mas.png" alt="Agregar" onclick="dlg2.show()" style="visibility: #{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional' ? 'hidden' : ''}"/>
+                        <p:dialog header="Nuevo Departamento" widgetVar="dlg2" resizable="false" position="center">
+                            <h:panelGrid columns="2" style="margin-bottom:10px">
+                                <h:outputLabel for="depa" value="Departamento:"/>
+                                <p:inputText id="depa" value="#{collectionsBean.departamento.departamento}"
+                                             required="true" requiredMessage="El nombre del departamento es necesario"/>
+                            </h:panelGrid>
+                            <p:commandButton value="Submit" process="@this,depa"
+                                             actionListener="#{collectionsBean.saveDepartamento}"
+                                             update="departamento"
+                                             partialSubmit="true" oncomplete="dlg2.hide();"/>
+                        </p:dialog>
+                    </p:outputPanel>
+
+                    <h:outputLabel for="puesto" value="Puesto: *"/>
+                    <p:outputPanel style="display:block;margin-top:10px;">
+                        <p:selectOneMenu id="puesto" value="#{usuarioBean.usuario.puesto}" style="width:75%"
+                                         disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                            <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                            <f:selectItems value="#{collectionsBean.puestos}" var="pue" itemLabel="#{pue.puesto}"
+                                           itemValue="#{pue.puesto}"/>
+                        </p:selectOneMenu>
+                        <img src="/resources/mas.png" alt="Agregar" onclick="dlg3.show()" style="visibility: #{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional' ? 'hidden' : ''}"/>
+                        <p:dialog header="Nuevo Puesto" widgetVar="dlg3" resizable="false" position="center">
+                            <h:panelGrid columns="2" style="margin-bottom:10px">
+                                <h:outputLabel for="_puesto" value="Puesto:"/>
+                                <p:inputText id="_puesto" value="#{collectionsBean.puesto.puesto}" required="true" requiredMessage="El nombre del puesto es necesario"/>
+                            </h:panelGrid>
+                            <p:commandButton value="Submit" process="@this,_puesto"
+                                             actionListener="#{collectionsBean.savePuesto}"
+                                             update="puesto"
+                                             partialSubmit="true" oncomplete="dlg3.hide();"/>
+                        </p:dialog>
+                    </p:outputPanel>
+
+                    <h:outputLabel for="beca" value="Beca: "/>
+                    <p:selectOneMenu id="beca" value="#{usuarioBean.usuario.beca}" editable="true"
+                                     disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}">
+                        <f:selectItem itemLabel="COFFA" itemValue="COFFA"/>
+                        <f:selectItem itemLabel="EDD" itemValue="EDD"/>
+                        <f:selectItem itemLabel="EDI" itemValue="EDI"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="sni" value="SNI: "/>
+                    <p:selectBooleanCheckbox id="sni" value="#{usuarioBean.usuario.sni}" disabled="#{usuarioBean.usuario.organizacion.nombre ne 'Instituto Politécnico Nacional'}"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Cancelar" action="list" icon="ui-icon-close"
+                                         process="@this" />
+                        <p:commandButton value="Actualizar" action="#{usuarioBean.update}" icon="ui-icon-check"
+                                         process="@this,password,nombre,noempleado,apaterno,amaterno,rfc,nivelacademico,unidadacademica,departamento,
+                         puesto,telefono,extension,movil,role,beca,sni,plaza,organizacion,mail" />
+                    </f:facet>
+                </p:panelGrid>
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

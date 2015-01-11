@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams>
+  <diagram name="beans">
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.ActividadesBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.BitacoraBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.CollectionsBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.ConfigBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.EquiposBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.EvaluacionBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.OrganizacionesBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.PresupuestoBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.ProyectoBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.Report1Bean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.SessionBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.UsuarioBean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.Report2Bean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.Report3Bean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.Report4Bean" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Actividad" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Alumno" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Config" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Departamento" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Evaluacion" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Evento" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Investigador" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Municipio" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Organizacion" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Presupuesto" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Proyecto" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Puesto" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Recurso" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.UnidadAcademica" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.model.Usuario" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.dao.Dao" />
+    <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="mx.ipn.cfie.proyectos.dao.HibernateDao" />
+    <command command-class="de.frag.umlplugin.uml.command.ConnectClassesCommand" />
+    <command command-class="de.frag.umlplugin.uml.command.ConnectSingleClassCommand" psi-class="mx.ipn.cfie.proyectos.beans.ActividadesBean" />
+    <command command-class="de.frag.umlplugin.uml.command.ConnectClassesCommand" />
+    <compartment-visibility>
+      <show-fields class="mx.ipn.cfie.proyectos.model.Usuario" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.SessionBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Evaluacion" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.Report2Bean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Alumno" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.EquiposBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.ProyectoBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.Report1Bean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Organizacion" />
+      <show-fields class="mx.ipn.cfie.proyectos.dao.HibernateDao" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.OrganizacionesBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Municipio" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Actividad" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.ConfigBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.UsuarioBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.CollectionsBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Config" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Evento" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Recurso" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Puesto" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.ActividadesBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.BitacoraBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.EvaluacionBean" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Investigador" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Departamento" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.Report3Bean" />
+      <show-fields class="mx.ipn.cfie.proyectos.dao.Dao" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.UnidadAcademica" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Proyecto" />
+      <show-fields class="mx.ipn.cfie.proyectos.model.Presupuesto" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.Report4Bean" />
+      <show-fields class="mx.ipn.cfie.proyectos.beans.PresupuestoBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Usuario" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.SessionBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Evaluacion" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.Report2Bean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Alumno" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.EquiposBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.ProyectoBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.Report1Bean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Organizacion" />
+      <show-methods class="mx.ipn.cfie.proyectos.dao.HibernateDao" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.OrganizacionesBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Municipio" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Actividad" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.ConfigBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.UsuarioBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Evento" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Config" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.CollectionsBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Recurso" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Puesto" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.ActividadesBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.BitacoraBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Investigador" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.EvaluacionBean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.Report3Bean" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Departamento" />
+      <show-methods class="mx.ipn.cfie.proyectos.dao.Dao" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.UnidadAcademica" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Proyecto" />
+      <show-methods class="mx.ipn.cfie.proyectos.model.Presupuesto" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.Report4Bean" />
+      <show-methods class="mx.ipn.cfie.proyectos.beans.PresupuestoBean" />
+    </compartment-visibility>
+  </diagram>
+</diagrams>
+

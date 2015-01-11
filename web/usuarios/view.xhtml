@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+            <div>
+
+                <p:panelGrid columns="6" style="width:100%">
+                    <f:facet name="header">
+                        Datos de la cuenta
+                    </f:facet>
+
+                    <h:outputLabel for="username" value="Nombre de usuario: *"/>
+                    <h:outputText id="username" value="#{usuarioBean.usuario.username}"/>
+
+                    <h:outputLabel for="password" value="Contraseña: *"/>
+                    <h:outputText id="password" value="*********"/>
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Tipo de usuario y Privilegios
+                    </f:facet>
+
+                    <h:outputLabel for="role" value="Perfil: *"/>
+                    <h:outputText id="role" value="#{usuarioBean.usuario.role}" />
+
+                    <h:outputLabel for="permisos" value="Privilegios: "/>
+                    <h:inputTextarea id="permisos" value="#{usuarioBean.permisos}" rows="10" cols="50" disabled="true"/>
+                </p:panelGrid>
+
+                <p:panelGrid columns="6" style="width:100%">
+                    <f:facet name="header">
+                        Datos del usuario
+                    </f:facet>
+
+                    <h:outputLabel for="nombre" value="Nombre: *"/>
+                    <h:outputText id="nombre" value="#{usuarioBean.usuario.nombre}" />
+
+                    <h:outputLabel for="apaterno" value="Apellido paterno: *"/>
+                    <h:outputText id="apaterno" value="#{usuarioBean.usuario.apellidoPaterno}" />
+
+                    <h:outputLabel for="amaterno" value="Apellido materno: *"/>
+                    <h:outputText id="amaterno" value="#{usuarioBean.usuario.apellidoMaterno}" />
+
+                    <h:outputLabel for="rfc" value="RFC: *"/>
+                    <h:outputText id="rfc" value="#{usuarioBean.usuario.rfc}" />
+
+                    <h:outputLabel for="organizacion" value="Organizacion: *"/>
+                    <h:outputText id="organizacion" value="#{usuarioBean.usuario.organizacion}" />
+
+                    <h:outputLabel for="telefono" value="Telefono: *"/>
+                    <h:outputText id="telefono" value="#{usuarioBean.usuario.telefonoOficina}"/>
+
+                    <h:outputLabel for="extension" value="Extension: *"/>
+                    <h:outputText id="extension" value="#{usuarioBean.usuario.extension}" />
+
+                    <h:outputLabel for="movil" value="Móvil: *"/>
+                    <h:outputText id="movil" value="#{usuarioBean.usuario.movil}" />
+
+                    <h:outputLabel for="mail" value="Correo electronico: *"/>
+                    <h:outputText id="mail" value="#{usuarioBean.usuario.email}" />
+                </p:panelGrid>
+
+                <p:panelGrid columns="4" style="width:100%">
+                    <f:facet name="header">
+                        Solo para personal del IPN
+                    </f:facet>
+
+                    <h:outputLabel for="noempleado" value="No. de empleado: *"/>
+                    <h:outputText id="noempleado" value="#{usuarioBean.usuario.numeroEmpleado}" />
+
+                    <h:outputLabel for="plaza" value="Tipo de Plaza en el IPN: "/>
+                    <h:outputText id="plaza" value="#{usuarioBean.usuario.plaza}" />
+
+                    <h:outputLabel for="nivelacademico" value="Grado Academico: *"/>
+                    <h:outputText id="nivelacademico" value="#{usuarioBean.usuario.nivelAcademico}" />
+
+                    <h:outputLabel for="unidadacademica" value="Unidad Academica: *"/>
+                    <h:outputText id="unidadacademica" value="#{usuarioBean.usuario.unidadAcademica}" />
+
+                    <h:outputLabel for="departamento" value="Departamento: *"/>
+                    <h:outputText id="departamento" value="#{usuarioBean.usuario.departamento}" />
+
+                    <h:outputLabel for="puesto" value="Puesto: *"/>
+                    <h:outputText id="puesto" value="#{usuarioBean.usuario.puesto}" />
+
+                    <h:outputLabel for="beca" value="Beca: "/>
+                    <h:outputText id="beca" value="#{usuarioBean.usuario.beca}" />
+
+                    <h:outputLabel for="sni" value="SNI: "/>
+                    <p:selectBooleanCheckbox id="sni" value="#{usuarioBean.usuario.sni}" disabled="true"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Editar" action="edit" icon="ui-icon-pencil"
+                                         process="@this" ajax="false"/>
+                        <p:commandButton value="Ver listado" action="list" icon="ui-icon-clipboard"
+                                         process="@this" ajax="false"/>
+                    </f:facet>
+                </p:panelGrid>
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

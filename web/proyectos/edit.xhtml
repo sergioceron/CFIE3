@@ -1,0 +1,324 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+        <div>
+            <p:panelGrid columns="4" style="width:100%">
+                <f:facet name="header">
+                    Información General de la Propuesta
+                </f:facet>
+
+                <h:outputLabel for="nivelacademico" value="Nivel Académico: *"/>
+                <p:selectOneMenu id="nivelacademico" value="#{proyectoBean.proyecto.nivelAcademico}" style="width:75%" required="true"
+                        requiredMessage="El nivel academico es obligatorio">
+                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                    <f:selectItem itemLabel="Medio Superior" itemValue="Medio Superior" />
+                    <f:selectItem itemLabel="Superior" itemValue="Superior" />
+                    <f:selectItem itemLabel="Posgrado" itemValue="Posgrado" />
+                </p:selectOneMenu>
+
+                <h:outputLabel for="unidadacademica" value="Unidad Académica: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:selectOneMenu id="unidadacademica" value="#{proyectoBean.proyecto.unidadAcademica}" style="width:75%" required="true"
+                                     requiredMessage="La unidad academica es obligatoria">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="" />
+                        <f:selectItems value="#{collectionsBean.unidadesAcademicas}" var="ua" itemLabel="#{ua.unidad}" itemValue="#{ua.unidad}"/>
+                    </p:selectOneMenu>
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg1.show()" class="img-right"/>
+                    <p:dialog header="Nueva Unidad Academica" widgetVar="dlg1" resizable="false" position="center">
+                            <h:panelGrid columns="2" style="margin-bottom:10px">
+                                <h:outputLabel for="unidad" value="Unidad Academica:" />
+                                <p:inputText id="unidad" value="#{collectionsBean.unidadAcademica.unidad}" required="true"
+                                             requiredMessage="El nombre de la unidad academica es obligatorio"
+                                             validatorMessage="El nombre de la unidad academica solo acepta letras">
+                                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                                </p:inputText>
+                            </h:panelGrid>
+                            <p:commandButton value="Submit" process="@this,unidad"
+                                             actionListener="#{collectionsBean.saveUnidadAcademica}"
+                                             update="unidadacademica"
+                                             partialSubmit="true" oncomplete="dlg1.hide();" />
+                    </p:dialog>
+                </p:outputPanel>
+
+
+                <h:outputLabel for="departamento" value="Departamento: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:selectOneMenu id="departamento" value="#{proyectoBean.proyecto.departamento}" style="width:75%" required="true"
+                                     requiredMessage="El departamento es obligatorio">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="" />
+                        <f:selectItems value="#{collectionsBean.departamentos}" var="dep" itemLabel="#{dep.departamento}" itemValue="#{dep.departamento}"/>
+                    </p:selectOneMenu>
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg2.show()" style="float:right;"/>
+                    <p:dialog header="Nuevo Departamento" widgetVar="dlg2" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px">
+                            <h:outputLabel for="depa" value="Departamento:" />
+                            <p:inputText id="depa" value="#{collectionsBean.departamento.departamento}" required="true"
+                                         requiredMessage="El nombre del departamento es obligatorio"
+                                         validatorMessage="El nombre del departamento solo acepta letras">
+                                <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                            </p:inputText>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,depa"
+                                         actionListener="#{collectionsBean.saveDepartamento}"
+                                         update="departamento"
+                                         partialSubmit="true" oncomplete="dlg2.hide();" />
+                    </p:dialog>
+                </p:outputPanel>
+
+                <h:outputLabel for="tipoproyecto" value="Tipo de Proyecto: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:selectOneMenu id="tipoproyecto" value="#{proyectoBean.proyecto.tipoProyecto}" style="width:75%" required="true"
+                                     requiredMessage="El tipo de proyecto es obligatorio">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                        <f:selectItem itemLabel="Proyecto Investigacion" itemValue="Proyecto Investigacion" />
+                        <f:selectItem itemLabel="Proyecto Multidisciplinario" itemValue="Proyecto Multidisciplinario" />
+                        <f:selectItem itemLabel="Propuesta de Estudio" itemValue="Propuesta de Estudio" />
+                    </p:selectOneMenu>
+                </p:outputPanel>
+
+                <h:outputLabel for="plazo" value="Plazo: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:selectOneMenu id="plazo" value="#{proyectoBean.proyecto.plazo}" style="width:75%" required="true"
+                                     requiredMessage="El plazo es obligatorio">
+                        <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                        <f:selectItem itemLabel="Corto Plazo (1 año)" itemValue="Corto Plazo (1 año)" />
+                        <f:selectItem itemLabel="Mediano Plazo (2 años)" itemValue="Mediano Plazo (2 años)" />
+                    </p:selectOneMenu>
+                </p:outputPanel>
+
+                <h:outputLabel for="foliosip" value="Folio SIP: *"/>
+                <p:inputText id="foliosip" value="#{proyectoBean.proyecto.folioSIP}" readonly="true"/>
+
+                <h:outputLabel for="titulo" value="Título: *"/>
+                <p:inputText id="titulo" value="#{proyectoBean.proyecto.titulo}" required="true"
+                             requiredMessage="El titulo es obligatorio" validatorMessage="El titulo solo acepta letras">
+                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                </p:inputText>
+
+                <h:outputLabel for="tipoinvestigacion" value="Tipo de investigación: *"/>
+                <p:inputText id="tipoinvestigacion" value="Educativa" disabled="true"/>
+
+                <h:outputLabel for="areaconocimiento" value="Área de conocimiento: *"/>
+                <p:selectOneMenu id="areaconocimiento" value="#{proyectoBean.proyecto.areaConocimiento}" style="width:75%" required="true"
+                                 requiredMessage="El area de conocimiento es obligatoria">
+                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                    <f:selectItem itemLabel="Ingenieria y Tecnología" itemValue="Ingenieria y Tecnologia" />
+                    <f:selectItem itemLabel="Ciencias Naturales" itemValue="Ciencias Naturales" />
+                    <f:selectItem itemLabel="Ciencias Médicas" itemValue="Ciencias Medicas" />
+                    <f:selectItem itemLabel="Ciencias Agrícolas" itemValue="Ciencias Agricolas" />
+                    <f:selectItem itemLabel="Ciencias Sociales" itemValue="Ciencias Sociales" />
+                    <f:selectItem itemLabel="Humanidades" itemValue="Humanidades" />
+                    <f:selectItem itemLabel="Perspectiva de Género" itemValue="Perspectiva de Genero" />
+                </p:selectOneMenu>
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="4" style="width:100%">
+                <f:facet name="header">
+                    Clasificación CONACyT
+                </f:facet>
+
+                <h:outputLabel for="sector" value="Sector: *"/>
+                <p:inputText id="sector" value="Educación" disabled="true"/>
+
+                <h:outputLabel for="subsector" value="Subsector: *"/>
+                <p:inputText id="subsector" value="#{proyectoBean.proyecto.subsector}" required="true"
+                             requiredMessage="El subsector es obligatorio"
+                             validatorMessage="El subsector solo acepta letras">
+                    <f:validateRegex pattern="[a-zA-Záéíóú ]+" />
+                </p:inputText>
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                    Presentación del Proyecto
+                </f:facet>
+
+                <h:outputLabel for="resumen" value="Resumen: *"/>
+                <p:inputTextarea id="resumen" value="#{proyectoBean.proyecto.resumen}" style="width:100%" required="true"
+                                 requiredMessage="El resumen es obligatorio"/>
+
+                <h:outputLabel for="objetivos" value="Objetivos: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:inputTextarea id="objetivos" value="#{proyectoBean.proyecto.objetivos}" style="width:100%" required="true"
+                                     requiredMessage="Los objetivos es obligatorios" />
+                </p:outputPanel>
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <h:outputLabel for="productofinal" value="Producto final: *"/>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <p:inputTextarea id="productofinal" value="#{proyectoBean.proyecto.productoFinal}" rows="6" style="width:100%"
+                                     requiredMessage="El producto final es obligatorio" required="true"/>
+                </p:outputPanel>
+
+                <h:outputLabel for="subproducto" value="Subproductos: *"/>
+                <p:scrollPanel mode="native" style="height:200px">
+                <p:selectManyCheckbox id="subproducto" value="#{proyectoBean.proyecto.subproductos}"
+                                      layout="pageDirection" style="height:200px"
+                                      required="true"
+                                      requiredMessage="Los subproductos son obligatorios">
+                    <f:selectItem itemLabel="Articulo de Divulgacion Nacional" itemValue="Articulo de Divulgacion Nacional" />
+                    <f:selectItem itemLabel="Articulo de Divulgacion Internacional" itemValue="Articulo de Divulgacion Internacional" />
+                    <f:selectItem itemLabel="Congresos Nacional" itemValue="Congresos Nacional" />
+                    <f:selectItem itemLabel="Congresos Internacional" itemValue="Congresos Internacional" />
+                    <f:selectItem itemLabel="Cursos Nacional" itemValue="Cursos Nacional" />
+                    <f:selectItem itemLabel="Cursos Internacional" itemValue="Cursos Internacional" />
+                    <f:selectItem itemLabel="Libros Nacional" itemValue="Libros Nacional" />
+                    <f:selectItem itemLabel="Libros Internacional" itemValue="Libros Internacional" />
+                    <f:selectItem itemLabel="Conferencias o Ponencias Nacional" itemValue="Conferencias o Ponencias Nacional" />
+                    <f:selectItem itemLabel="Conferencias o Ponencias Internacional" itemValue="Conferencias o Ponencias Internacional" />
+                    <f:selectItem itemLabel="Articulo Cientifico Nacional" itemValue="Articulo Cientifico Nacional" />
+                    <f:selectItem itemLabel="Articulo Cientifico Internacional" itemValue="Articulo Cientifico Internacional" />
+                    <f:selectItem itemLabel="Seminarios Nacional" itemValue="Seminarios Nacional" />
+                    <f:selectItem itemLabel="Seminarios Internacional" itemValue="Seminarios Internacional" />
+                    <f:selectItem itemLabel="Manuales Nacional" itemValue="Manuales Nacional" />
+                    <f:selectItem itemLabel="Manuales Internacional" itemValue="Manuales Internacional" />
+                    <f:selectItem itemLabel="Programa de Radio y TV Nacional" itemValue="Programa de Radio y TV Nacional" />
+                    <f:selectItem itemLabel="Programa de Radio y TV Internacional" itemValue="Programa de Radio y TV Internacional" />
+                    <f:selectItem itemLabel="Proceso Piloto" itemValue="Proceso Piloto" />
+                    <f:selectItem itemLabel="Proceso Laboratorio" itemValue="Proceso Laboratorio" />
+                    <f:selectItem itemLabel="Patente Piloto" itemValue="Patente Piloto" />
+                    <f:selectItem itemLabel="Patente Laboratorio" itemValue="Patente Laboratorio" />
+                    <f:selectItem itemLabel="Hardware Piloto" itemValue="Hardware Piloto" />
+                    <f:selectItem itemLabel="Hardware Laboratorio" itemValue="Hardware Laboratorio" />
+                    <f:selectItem itemLabel="Prototipo Piloto" itemValue="Prototipo Piloto" />
+                    <f:selectItem itemLabel="Prototipo Laboratorio" itemValue="Prototipo Laboratorio" />
+                    <f:selectItem itemLabel="Certificado de Invencion Piloto" itemValue="Certificado de Invencion Piloto" />
+                    <f:selectItem itemLabel="Certificado de Invencion Laboratorio" itemValue="Certificado de Invencion Laboratorio" />
+                    <f:selectItem itemLabel="Software Piloto" itemValue="Software Piloto" />
+                    <f:selectItem itemLabel="Software Laboratorio" itemValue="Software Laboratorio" />
+                    <f:attribute name="collectionType" value="java.util.HashSet" />
+                </p:selectManyCheckbox>
+                </p:scrollPanel>
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                    Financiamiento Externo
+                </f:facet>
+
+                <h:outputLabel value="¿El Proyecto cuenta con Financiamiento Externo?"/>
+                <p:selectOneRadio id="financiamentoexterno" value="#{proyectoBean.proyecto.financiamientoExterno}" required="true">
+                    <f:selectItem itemLabel="Si" itemValue="1" />
+                    <f:selectItem itemLabel="No" itemValue="0" />
+                    <p:ajax update="cantidad" event="change" process="financiamentoexterno" />
+                </p:selectOneRadio>
+
+                <h:outputLabel for="cantidad" value="Cantidad: *"/>
+                <p:inputText id="cantidad" value="#{proyectoBean.proyecto.cantidad}" disabled="#{proyectoBean.proyecto.financiamientoExterno eq 0}" style="width:100%" converterMessage="La cantidad debe ser numerica" />
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                     Programación de Actividades de Investigación
+                </f:facet>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg9.show()" style="float:right;"/>
+                    <p:dialog header="Nueva Actividad de Investigacion" widgetVar="dlg9" resizable="false" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px" id="d9">
+                            <h:outputLabel for="a_valor" value="Valor % de la Actividad: " />
+                            <p:inputText id="a_valor" value="#{actividadesBean.actividad.valor}" required="true"
+                                         requiredMessage="El porcentaje de la actividad es obligatorio"
+                                         converterMessage="El porcentaje debe ser entre 1 y 100">
+                            </p:inputText>
+                            <h:outputLabel for="a_desc" value="Descripción:" />
+                            <p:inputTextarea id="a_desc" value="#{actividadesBean.actividad.descripcion}" style="width:100%"/>
+                            <h:outputLabel for="a_pf" value="Periodo Final:" />
+                            <p:calendar id="a_pf" value="#{actividadesBean.actividad.periodoFinal}" showOn="button" required="true" requiredMessage="El periodo final de la actividad es obligatorio"/>
+                            <h:outputLabel for="a_pi" value="Periodo Inicial:" />
+                            <p:calendar id="a_pi" value="#{actividadesBean.actividad.periodoInicial}" showOn="button" required="true" requiredMessage="El periodo inicial de la actividad es obligatorio"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,a_valor,a_desc,a_pf,a_pi"
+                                         actionListener="#{actividadesBean.saveActividad}"
+                                         update="actividades,d9"
+                                         partialSubmit="true" oncomplete="dlg9.hide();" />
+                    </p:dialog>
+                </p:outputPanel>
+                <p:dataTable id="actividades" var="_actividad" value="#{actividadesBean.actividades}" emptyMessage="No hay actividades registradas">
+                    <p:column headerText="No. de Actividad">
+                        <h:outputText value="#{_actividad.id}" />
+                    </p:column>
+                    <p:column headerText="Valor % de Cada Meta">
+                        <h:outputText value="#{_actividad.valor}" />
+                    </p:column>
+                    <p:column headerText="Despcripción de la Actividad">
+                        <h:outputText value="#{_actividad.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Periodo Final">
+                        <h:outputText value="#{_actividad.periodoFinal}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Periodo Inicial">
+                        <h:outputText value="#{_actividad.periodoInicial}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Acción">
+                        <p:commandButton icon="ui-icon-closethick" actionListener="#{actividadesBean.removeActividad(_actividad)}" update="actividades" process="@this" />
+                    </p:column>
+                </p:dataTable>
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                    Presupuesto
+                </f:facet>
+                <p:outputPanel style="display:block;margin-top:10px;">
+                    <img src="/resources/mas.png" alt="Agregar" onclick="dlg11.show()" style="float:right;"/>
+                    <p:dialog header="Nuevo Activo" widgetVar="dlg11" resizable="false" position="center">
+                        <h:panelGrid columns="2" style="margin-bottom:10px" id="d11">
+                            <h:outputLabel for="p_capitulo" value="Capitulo:" />
+                            <p:inputText id="p_capitulo" value="#{presupuestosBean.presupuesto.capitulos}" requiredMessage="El capitulo del activo es obligatorio" required="true" />
+                            <h:outputLabel for="p_desc" value="Descripción:" />
+                            <p:inputText id="p_desc" value="#{presupuestosBean.presupuesto.descripcion}" style="width:100%"/>
+                            <h:outputLabel for="p_total" value="Total: $" />
+                            <p:inputText id="p_total" value="#{presupuestosBean.presupuesto.monto}" required="true"
+                                         requiredMessage="El total del activo es obligatorio"
+                                         converterMessage="El total del activo debe ser numerico"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" process="@this,p_capitulo,p_desc,p_total"
+                                         actionListener="#{presupuestosBean.save}"
+                                         update="presupuestos,d11"
+                                         partialSubmit="true" oncomplete="dlg11.hide();" />
+                    </p:dialog>
+                </p:outputPanel>
+                <p:dataTable id="presupuestos" var="_presupuesto" value="#{presupuestosBean.presupuestos}" emptyMessage="No hay presupuestos registrados">
+                    <p:column headerText="Capitulos">
+                        <h:outputText value="#{_presupuesto.capitulos}" />
+                    </p:column>
+                    <p:column headerText="Descripción/Concepto" footerText="Total: ">
+                        <h:outputText value="#{_presupuesto.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Total: $" footerText="#{presupuestosBean.total}$">
+                        <h:outputText value="#{_presupuesto.monto}" />
+                    </p:column>
+                    <p:column headerText="Acción">
+                        <p:commandButton icon="ui-icon-closethick" actionListener="#{presupuestosBean.remove(_presupuesto)}" update="presupuestos" process="@this" />
+                    </p:column>
+                </p:dataTable>
+                <f:facet name="footer">
+                    <p:commandButton value="Cancelar" action="list" icon="ui-icon-close"
+                                     process="@none" />
+                    <p:commandButton value="Actualizar" action="#{proyectoBean.update}" icon="ui-icon-check"
+                            process="@this,nivelacademico,unidadacademica,departamento,tipoproyecto,tipoinvestigacion,plazo,titulo,areaconocimiento,sector,subsector,
+                            resumen,objetivos,productofinal,subproducto,financiamentoexterno,cantidad" />
+                </f:facet>
+            </p:panelGrid>
+        </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,149 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <p:growl autoUpdate="true" id="messages"/>
+        <h:form id="form1">
+        <div>
+            <p:panelGrid columns="4" style="width:100%">
+                <f:facet name="header">
+                    Información General de la Propuesta
+                </f:facet>
+
+                <h:outputLabel value="Nivel Academico:"/>
+                <h:outputText value="#{proyectoBean.proyecto.nivelAcademico}"  />
+
+                <h:outputLabel value="Unidad Academica:"/>
+                <h:outputText value="#{proyectoBean.proyecto.unidadAcademica}"  />
+
+
+                <h:outputLabel value="Departamento:"/>
+                <h:outputText value="#{proyectoBean.proyecto.departamento}"  />
+
+                <h:outputLabel value="Tipo de Proyecto:"/>
+                <h:outputText value="#{proyectoBean.proyecto.tipoProyecto}"  />
+
+                <h:outputLabel value="Plazo:"/>
+                <h:outputText value="#{proyectoBean.proyecto.plazo}"  />
+
+                <h:outputLabel value="Folio SIP:"/>
+                <h:outputText value="#{proyectoBean.proyecto.folioSIP}" required="true"/>
+
+                <h:outputLabel value="Titulo:"/>
+                <h:outputText value="#{proyectoBean.proyecto.titulo}" required="true"/>
+
+                <h:outputLabel value="Tipo de investigación:"/>
+                <h:outputText value="Educativa" />
+
+                <h:outputLabel value="Area de conocimiento:"/>
+                <h:outputText value="#{proyectoBean.proyecto.areaConocimiento}" />
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="4" style="width:100%">
+                <f:facet name="header">
+                    Clasificación CONACyT
+                </f:facet>
+
+                <h:outputLabel value="Sector:"/>
+                <h:outputText value="Educación" />
+
+                <h:outputLabel value="Subsector:"/>
+                <h:outputText value="#{proyectoBean.proyecto.subsector}" />
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" style="width:100%">
+                <f:facet name="header">
+                    Presentación del Proyecto
+                </f:facet>
+
+                <h:outputLabel value="Resumen:"/>
+                <h:outputText value="#{proyectoBean.proyecto.resumen}" style="width:100%" />
+
+                <h:outputLabel value="Objetivos:"/>
+                <h:outputText value="#{proyectoBean.proyecto.objetivos}" style="width:100%" />
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" style="width:100%">
+                <h:outputLabel value="Producto final:"/>
+                <h:outputText value="#{proyectoBean.proyecto.productoFinal}" />
+
+                <h:outputLabel value="Subproductos:"/>
+                <h:outputText value="#{proyectoBean.proyecto.subproductos}" />
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" style="width:100%">
+                <f:facet name="header">
+                    Financiamiento Externo
+                </f:facet>
+
+                <h:outputLabel value="¿El Proyecto cuenta con Financiamiento Externo?"/>
+                <h:outputText value="#{proyectoBean.proyecto.financiamientoExterno}" />
+
+                <h:outputLabel value="Cantidad:"/>
+                <h:outputText value="$#{proyectoBean.proyecto.cantidad}" />
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                     Programación de Actividades de Investigación
+                </f:facet>
+                <p:dataTable id="actividades" var="_actividad" value="#{actividadesBean.actividades}">
+                    <p:column headerText="No. de Actividad">
+                        <h:outputText value="#{_actividad.id}" />
+                    </p:column>
+                    <p:column headerText="Valor % de Cada Meta">
+                        <h:outputText value="#{_actividad.valor}" />
+                    </p:column>
+                    <p:column headerText="Despcripción de la Actividad">
+                        <h:outputText value="#{_actividad.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Periodo Final">
+                        <h:outputText value="#{_actividad.periodoFinal}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Periodo Inicial">
+                        <h:outputText value="#{_actividad.periodoInicial}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" style="width:100%">
+                <f:facet name="header">
+                    Presupuesto
+                </f:facet>
+                <p:dataTable id="presupuestos" var="_presupuesto" value="#{presupuestosBean.presupuestos}"
+                             emptyMessage="No hay presupuestos registrados">
+                    <p:column headerText="Capitulos">
+                        <h:outputText value="#{_presupuesto.capitulos}" />
+                    </p:column>
+                    <p:column headerText="Descripción/Concepto" footerText="Total: ">
+                        <h:outputText value="#{_presupuesto.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Total" footerText="#{presupuestosBean.total}$">
+                        <h:outputText value="#{_presupuesto.monto}" />
+                    </p:column>
+                </p:dataTable>
+                <f:facet name="footer">
+                    <p:commandButton value="Editar" action="edit" icon="ui-icon-pencil"
+                                     process="@this" ajax="false"
+                                     rendered="#{not ((sessionBean.usuario.role eq 'Director de Proyecto') or (sessionBean.usuario.role eq 'Evaluador') or (sessionBean.usuario.role eq 'Representante'))}"/>
+                    <p:commandButton value="Ver listado" action="list" icon="ui-icon-clipboard"
+                                     process="@this" ajax="false"/>
+                </f:facet>
+            </p:panelGrid>
+        </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

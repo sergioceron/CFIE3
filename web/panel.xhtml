@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="template.xhtml">
+
+    <ui:define name="body">
+        <h:form id="form1">
+            <div id="content" style="text-align:center;border:1px solid #000;">
+                <p:messages id="messages" autoUpdate="true" />
+                <div class="avatar">
+                    <h:graphicImage value="/resources/#{sessionBean.usuario.role}.png" width="200" />
+                </div>
+                <div class="list-images">
+                    <h:commandLink action="proyectos">
+                        <h:graphicImage value="/resources/buttons/proyectos.png" />
+                    </h:commandLink>
+                    <h:commandLink action="organizaciones" rendered="#{!(sessionBean.usuario.role eq 'Evaluador')}">
+                        <h:graphicImage value="/resources/buttons/organizaciones.png" />
+                    </h:commandLink>
+                    <h:commandLink action="evaluaciones" rendered="#{(sessionBean.usuario.role eq 'Evaluador')}">
+                        <h:graphicImage value="/resources/buttons/evaluar.png" />
+                    </h:commandLink>
+                    <h:commandLink action="asignarevals" rendered="#{(sessionBean.usuario.role eq 'Administrador') or (sessionBean.usuario.role eq 'Jefe de Departamento')}">
+                        <h:graphicImage value="/resources/buttons/evaluadores.png" />
+                    </h:commandLink>
+                    <h:commandLink action="equipos" rendered="#{!(sessionBean.usuario.role eq 'Evaluador' or sessionBean.usuario.role eq 'Colaborador')}">
+                        <h:graphicImage value="/resources/buttons/equipos.png" />
+                    </h:commandLink>
+                    <h:commandLink action="usuarios" rendered="#{(sessionBean.usuario.role eq 'Administrador') or (sessionBean.usuario.role eq 'Jefe de Departamento')}">
+                        <h:graphicImage value="/resources/buttons/usuarios.png" />
+                    </h:commandLink>
+                    <h:commandLink action="catalogos" rendered="#{(sessionBean.usuario.role eq 'Administrador')}">
+                        <h:graphicImage value="/resources/buttons/catalogos.png" />
+                    </h:commandLink>
+                    <h:commandLink action="reportes" rendered="#{(sessionBean.usuario.role eq 'Administrador') or (sessionBean.usuario.role eq 'Jefe de Departamento')}">
+                        <h:graphicImage value="/resources/buttons/reportes.png" />
+                    </h:commandLink>
+                    <h:commandLink action="bitacora" rendered="#{(sessionBean.usuario.role eq 'Administrador')}">
+                        <h:graphicImage value="/resources/buttons/bitacora.png" />
+                    </h:commandLink>
+
+                    <h:commandLink action="#{sessionBean.logoff}" style="float:right;padding:40px;">
+                        <h:graphicImage value="/resources/logoff.png" />
+                    </h:commandLink>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

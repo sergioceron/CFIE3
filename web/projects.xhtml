@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+        <h:form>
+            <p:panel id="content" style="text-align:center;border:1px solid #000;">
+                <p:messages id="messages" autoUpdate="true" closable="true" />
+                <h:commandLink action="#{proyectoBean.create}">
+                    <p:panel>
+                        <h:graphicImage value="/resources/new.png" />
+                    </p:panel>
+                </h:commandLink>
+                <h:commandLink action="list">
+                    <p:panel>
+                        <h:graphicImage value="/resources/list.png" />
+                    </p:panel>
+                </h:commandLink>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+
